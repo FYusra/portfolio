@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fadli Yusra | Profil</title>
+    <title>Fadli Yusra | Beranda</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -13,8 +13,8 @@
         <a href="index.html" class="logo-text">My Portofolio<span>.</span></a>
         <nav>
           <ul>
-            <li><a href="index.html">Beranda</a></li>
-            <li><a href="profil.html" class="active">Profil</a></li>
+            <li><a href="index.html" class="active">Beranda</a></li>
+            <li><a href="profil.html">Profil</a></li>
             <li><a href="kontak.html">Kontak</a></li>
           </ul>
         </nav>
@@ -22,194 +22,79 @@
     </header>
 
     <main>
-      <!-- PAGE HERO -->
-      <div class="page-hero">
-        <span class="section-label">Tentang Saya</span>
-        <h1 class="section-heading">Profil Saya</h1>
-        <p>
-          Kenali lebih dekat — siapa saya, dari mana, dan apa yang saya kejar.
-        </p>
-      </div>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-grid container">
+          <div class="hero-text">
+            <p class="hero-greeting">Halo, saya</p>
+            <h1 class="hero-name">
+              Fadli
+              <span class="highlight">Yusra</span>
+            </h1>
+            <p class="hero-role">
+              Mahasiswa · Digital Marketing Profesional · Konten Kreator
+            </p>
+            <p class="hero-desc">
+              Seorang mahasiswa yang optimis dan gigih, dengan pengalaman di
+              bidang pemasaran dan penjualan. Tertarik pada dunia digital, media
+              sosial, dan pembuatan konten kreatif.
+            </p>
+            <div class="hero-btns">
+              <a href="profil.html" class="btn btn-primary">Lihat Profil</a>
+              <a href="kontak.html" class="btn btn-outline">Hubungi Saya</a>
+            </div>
+          </div>
 
-      <!-- PROFILE CONTENT -->
-      <section class="profile-section">
-        <div class="container">
-          <div class="profile-grid">
-            <!-- LEFT: Photo + Badge -->
-            <div class="profile-photo-wrap">
+          <div class="hero-image-wrap">
+            <div class="hero-img-frame">
+              <div class="hero-img-bg"></div>
               <img
-                src="Fadli Yusra 2.jpg"
+                src="Fadli Yusra.jpg"
                 alt="Foto Fadli Yusra"
-                class="profile-photo"
+                class="hero-img-main"
                 onerror="
                   this.style.background = '#e0d9ce';
-                  this.style.minHeight = '200px';
+                  this.alt = 'Foto tidak ditemukan';
                 "
               />
-              <div class="profile-badge">
-                <span class="badge-name">Fadli Yusra</span>
-                <span>Mahasiswa · Jakarta, Indonesia</span>
-              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <!-- RIGHT: Info -->
-            <div class="profile-details">
-              <!-- Data Diri -->
-              <span class="section-label">Data Diri</span>
-              <h2
-                class="section-heading"
-                style="font-size: 2rem; margin-bottom: 1.5rem"
-              >
-                Informasi Akademik
-              </h2>
-              <table class="info-table">
-                <tr>
-                  <td>Nama Lengkap</td>
-                  <td>Fadli Yusra</td>
-                </tr>
-                <tr>
-                  <td>NIM</td>
-                  <td>2403015075</td>
-                </tr>
-                <tr>
-                  <td>Jurusan</td>
-                  <td>Teknik Informatika</td>
-                </tr>
-                <tr>
-                  <td>Tempat, Tgl Lahir</td>
-                  <td>Jakarta, 10 September 2004</td>
-                </tr>
-                <tr>
-                  <td>Agama</td>
-                  <td>Islam</td>
-                </tr>
-                <tr>
-                  <td>Status</td>
-                  <td>Belum Menikah</td>
-                </tr>
-                <tr>
-                  <td>Kewarganegaraan</td>
-                  <td>Indonesia</td>
-                </tr>
-                <tr>
-                  <td>Domisili</td>
-                  <td>Pondok Bambu, Jakarta Timur</td>
-                </tr>
-                <tr>
-                  <td>Email</td>
-                  <td>fadliyusra84@gmail.com</td>
-                </tr>
-                <tr>
-                  <td>No. HP</td>
-                  <td>+62813-8084-9729</td>
-                </tr>
-              </table>
+      <!-- SKILLS PREVIEW -->
+      <section class="skills-section">
+        <div class="container">
+          <h2 class="section-heading">Kemampuan</h2>
 
-              <!-- Deskripsi Diri -->
-              <span class="section-label">Tentang Saya</span>
-              <h3 class="sub-heading">Deskripsi Diri</h3>
-              <div class="profile-desc">
-                Saya adalah seseorang yang optimis dan gigih dalam menemukan
-                solusi atas berbagai masalah, serta bertanggung jawab terhadap
-                segala hal yang dikerjakan. Saya sangat tertarik dalam
-                mempelajari hal-hal baru, terutama di bidang digital dan
-                teknologi. Dengan prinsip ini, saya berkomitmen untuk dapat
-                berkontribusi dengan baik di lingkungan akademik maupun
-                profesional, serta terus membangun kinerja yang positif setiap
-                harinya. Sebagai mahasiswa aktif di Universitas Muhammadiyah
-                Prof. Dr. Hamka (UHAMKA) memberikan landasan yang kokoh bagi
-                pengembangan akademis dan pribadi. Pengalaman sebelumnya sebagai
-                Konsultan Penjualan di Wuling Motors Indonesia telah mengasah
-                kompetensi dalam penggalian prospek dan keterlibatan klien.
-                Dengan fokus pada pembelajaran berkelanjutan, berupaya
-                memanfaatkan pengetahuan dan keterampilan untuk menciptakan
-                hasil positif.
-              </div>
-
-              <!-- 1. Pengalaman Kerja -->
-              <span
-                class="section-label"
-                style="margin-top: 2.5rem; display: inline-block"
-                >Karir</span
-              >
-              <h3 class="sub-heading">Pengalaman Kerja</h3>
-              <div class="timeline">
-                <div class="timeline-item">
-                  <p class="timeline-date">Juli – Oktober 2023</p>
-                  <h4 class="timeline-title">Sales Consultant</h4>
-                  <p class="timeline-sub">Wuling Maju Motor</p>
-                  <p class="timeline-desc">
-                    Melakukan pemasaran dan penjualan produk mobil Wuling secara
-                    langsung maupun melalui media online dan sosial media.
-                    Melaksanakan after sales maintenance untuk setiap pelanggan,
-                    serta membangun relasi dan jaringan bisnis dengan perusahaan
-                    pembiayaan rekanan.
-                  </p>
-                </div>
-              </div>
-
-              <!-- 2. Riwayat Pendidikan -->
-              <span
-                class="section-label"
-                style="margin-top: 2.5rem; display: inline-block"
-                >Akademik</span
-              >
-              <h3 class="sub-heading">Riwayat Pendidikan</h3>
-              <div class="timeline">
-                <div class="timeline-item">
-                  <p class="timeline-date">2024 – Sekarang</p>
-                  <h4 class="timeline-title">
-                    Universitas Muhammadiyah Prof. Dr. Hamka (Uhamka)
-                  </h4>
-                  <p class="timeline-sub">Perguruan Tinggi</p>
-                </div>
-                <div class="timeline-item">
-                  <p class="timeline-date">2020 – 2023</p>
-                  <h4 class="timeline-title">SMA Negeri 61 Jakarta</h4>
-                  <p class="timeline-sub">Sekolah Menengah Atas</p>
-                  <p class="timeline-sub">IPA · Nilai Rata-rata: 82.71</p>
-                </div>
-                <div class="timeline-item">
-                  <p class="timeline-date">2017 – 2020</p>
-                  <h4 class="timeline-title">SMP Perguruan Rakyat 3 Jakarta</h4>
-                  <p class="timeline-sub">Sekolah Menengah Pertama</p>
-                </div>
-                <div class="timeline-item">
-                  <p class="timeline-date">2011 – 2017</p>
-                  <h4 class="timeline-title">SD Negeri 01 Pagi Pondok Bambu</h4>
-                  <p class="timeline-sub">Sekolah Dasar</p>
-                </div>
-              </div>
-
-              <!-- 3. Hobi -->
-              <span
-                class="section-label"
-                style="margin-top: 2.5rem; display: inline-block"
-                >Keseharian</span
-              >
-              <h3 class="sub-heading">Hobi</h3>
-              <div class="tag-list">
-                <span class="tag">Olahraga</span>
-                <span class="tag">Mengedit Video</span>
-                <span class="tag">Media Sosial</span>
-                <span class="tag">Networking</span>
-              </div>
-
-              <!-- 4. Cita-cita -->
-              <span
-                class="section-label"
-                style="margin-top: 2rem; display: inline-block"
-                >Masa Depan</span
-              >
-              <h3 class="sub-heading">Cita-Cita</h3>
-              <div class="tag-list">
-                <span class="tag gold">Captain Pilot</span>
-                <span class="tag gold">GenAI Works</span>
-                <span class="tag gold">Trader Profesional</span>
-                <span class="tag gold">Digital Marketer Profesional</span>
-                <span class="tag gold">Wirausahawan Sukses</span>
-                <span class="tag gold">Content Creator</span>
-              </div>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <h3>Microsoft Word</h3>
+              <p>
+                Membuat dokumen resmi, laporan, dan presentasi dengan format
+                profesional.
+              </p>
+            </div>
+            <div class="skill-card">
+              <h3>Social Media</h3>
+              <p>
+                Pengelolaan konten dan strategi pemasaran melalui berbagai
+                platform media sosial.
+              </p>
+            </div>
+            <div class="skill-card">
+              <h3>Video Editing</h3>
+              <p>
+                Editing video menggunakan CapCut dan VN untuk konten kreatif dan
+                promosi.
+              </p>
+            </div>
+            <div class="skill-card">
+              <h3>Pemasaran</h3>
+              <p>
+                Pengalaman langsung dalam penjualan produk dan membangun relasi
+                bisnis.
+              </p>
             </div>
           </div>
         </div>
