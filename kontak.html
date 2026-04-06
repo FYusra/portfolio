@@ -36,10 +36,11 @@
       <section class="contact-section">
         <div class="container">
           <div class="contact-grid">
-
             <!-- LEFT: Info Kontak -->
             <div class="contact-info-box reveal from-left">
-              <span class="section-label" style="color: var(--gold)">Info Kontak</span>
+              <span class="section-label" style="color: var(--gold)"
+                >Info Kontak</span
+              >
               <h2 class="section-heading">Detail Saya</h2>
               <p>
                 Jangan ragu untuk menghubungi saya kapan saja. Saya akan
@@ -74,7 +75,10 @@
             <!-- RIGHT: Form Kontak -->
             <div class="contact-form-box reveal from-right">
               <span class="section-label">Kirim Pesan</span>
-              <h2 class="section-heading" style="font-size: 1.8rem; margin-bottom: 2rem">
+              <h2
+                class="section-heading"
+                style="font-size: 1.8rem; margin-bottom: 2rem"
+              >
                 Formulir Kontak
               </h2>
 
@@ -113,15 +117,32 @@
                   Kirim Pesan
                 </button>
 
-                <p id="form-success" style="display:none; margin-top:1rem; color:#10b981; font-weight:600; text-align:center;">
-                  ✅ Pesan berhasil dikirim! Terima kasih.
+                <p
+                  id="form-success"
+                  style="
+                    display: none;
+                    margin-top: 1rem;
+                    color: #10b981;
+                    font-weight: 600;
+                    text-align: center;
+                  "
+                >
+                  Pesan berhasil dikirim! Terima kasih.
                 </p>
-                <p id="form-error" style="display:none; margin-top:1rem; color:#e63946; font-weight:600; text-align:center;">
-                  ❌ Gagal mengirim. Coba lagi beberapa saat.
+                <p
+                  id="form-error"
+                  style="
+                    display: none;
+                    margin-top: 1rem;
+                    color: #e63946;
+                    font-weight: 600;
+                    text-align: center;
+                  "
+                >
+                  Gagal mengirim. Coba lagi beberapa saat.
                 </p>
               </form>
             </div>
-
           </div>
         </div>
       </section>
@@ -134,42 +155,48 @@
 
     <script src="script.js"></script>
     <script>
-      const form       = document.getElementById('contactForm');
-      const btn        = document.getElementById('submitBtn');
-      const successMsg = document.getElementById('form-success');
-      const errorMsg   = document.getElementById('form-error');
+      const form = document.getElementById("contactForm");
+      const btn = document.getElementById("submitBtn");
+      const successMsg = document.getElementById("form-success");
+      const errorMsg = document.getElementById("form-error");
 
-      form.addEventListener('submit', async function(e) {
+      form.addEventListener("submit", async function (e) {
         e.preventDefault();
 
         // Loading state
         btn.disabled = true;
-        btn.textContent = 'Mengirim...';
-        successMsg.style.display = 'none';
-        errorMsg.style.display   = 'none';
+        btn.textContent = "Mengirim...";
+        successMsg.style.display = "none";
+        errorMsg.style.display = "none";
 
         try {
-          const response = await fetch('https://formspree.io/f/xgoprkvr', {
-            method: 'POST',
+          const response = await fetch("https://formspree.io/f/xgoprkvr", {
+            method: "POST",
             body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
+            headers: { Accept: "application/json" },
           });
 
           if (response.ok) {
             form.reset();
-            successMsg.style.display = 'block';
-            setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+            successMsg.style.display = "block";
+            setTimeout(() => {
+              successMsg.style.display = "none";
+            }, 5000);
           } else {
-            errorMsg.style.display = 'block';
-            setTimeout(() => { errorMsg.style.display = 'none'; }, 5000);
+            errorMsg.style.display = "block";
+            setTimeout(() => {
+              errorMsg.style.display = "none";
+            }, 5000);
           }
         } catch (err) {
-          errorMsg.style.display = 'block';
-          setTimeout(() => { errorMsg.style.display = 'none'; }, 5000);
+          errorMsg.style.display = "block";
+          setTimeout(() => {
+            errorMsg.style.display = "none";
+          }, 5000);
         }
 
         btn.disabled = false;
-        btn.textContent = 'Kirim Pesan';
+        btn.textContent = "Kirim Pesan";
       });
     </script>
   </body>
