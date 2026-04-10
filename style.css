@@ -881,3 +881,126 @@ footer span {
     padding: 2rem 1.5rem;
   }
 }
+
+/* ===================== DARK MODE ===================== */
+body.dark-mode {
+  --cream: #0f0f0f;
+  --bg2: #1a1a1a;
+  --dark: #f0ede8;
+  --muted: #9a9aaa;
+  --white: #1e1e1e;
+  --card-bg: #1e1e1e;
+  --border: #2a2a2a;
+  background-color: #0f0f0f;
+  color: #f0ede8;
+}
+
+body.dark-mode header {
+  background: rgba(15, 15, 15, 0.95);
+  border-bottom-color: #2a2a2a;
+}
+
+body.dark-mode .skill-card,
+body.dark-mode .contact-form-box,
+body.dark-mode .profile-desc {
+  background: #1e1e1e;
+  border-color: #2a2a2a;
+  color: #f0ede8;
+}
+
+body.dark-mode .info-table td {
+  color: #f0ede8;
+  border-bottom-color: #2a2a2a;
+}
+
+body.dark-mode .info-table td:first-child {
+  color: #9a9aaa;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+  background: #1e1e1e;
+  border-color: #2a2a2a;
+  color: #f0ede8;
+}
+
+body.dark-mode .page-hero {
+  background: #111111;
+}
+
+body.dark-mode .about-strip {
+  background: #111111;
+}
+
+body.dark-mode footer {
+  background: #0a0a0a;
+}
+
+/* Tombol dark mode toggle */
+.dark-toggle {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.5px;
+}
+
+.dark-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ===================== VALIDASI FORM ===================== */
+.input-error {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.12) !important;
+}
+
+.error-msg {
+  font-size: 0.78rem;
+  color: var(--accent);
+  margin-top: 0.35rem;
+  display: none;
+}
+
+.error-msg.show {
+  display: block;
+}
+
+/* ===================== BACA LEBIH LANJUT ===================== */
+.desc-short {
+  display: block;
+}
+
+.desc-more {
+  display: none;
+}
+
+.desc-more.show {
+  display: inline;
+}
+
+.btn-readmore {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  padding: 0;
+  transition: color 0.2s ease;
+  font-family: "DM Sans", sans-serif;
+}
+
+.btn-readmore:hover {
+  color: #c0303c;
+}
