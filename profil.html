@@ -18,6 +18,7 @@
             <li><a href="kontak.html">Kontak</a></li>
           </ul>
         </nav>
+        <button class="dark-toggle" id="darkToggle">Mode Gelap</button>
       </div>
     </header>
 
@@ -60,7 +61,7 @@
                 class="section-heading reveal d1"
                 style="font-size: 2rem; margin-bottom: 1.5rem"
               >
-                Identitas Diri
+                Informasi Akademik
               </h2>
               <table class="info-table reveal d2">
                 <tr>
@@ -74,6 +75,10 @@
                 <tr>
                   <td>Jurusan</td>
                   <td>Teknik Informatika</td>
+                </tr>
+                <tr>
+                  <td>Universitas</td>
+                  <td>Universitas Muhammadiyah Prof. Dr. Hamka (UHAMKA)</td>
                 </tr>
                 <tr>
                   <td>Tempat, Tgl Lahir</td>
@@ -109,21 +114,71 @@
               <span class="section-label reveal">Tentang Saya</span>
               <h3 class="sub-heading reveal d1">Deskripsi Diri</h3>
               <div class="profile-desc reveal d2">
-                Saya adalah seseorang yang optimis dan gigih dalam menemukan
-                solusi atas berbagai masalah, serta bertanggung jawab terhadap
-                segala hal yang dikerjakan. Saya sangat tertarik dalam
-                mempelajari hal-hal baru, terutama di bidang digital dan
-                teknologi. Dengan prinsip ini, saya berkomitmen untuk dapat
-                berkontribusi dengan baik di lingkungan akademik maupun
-                profesional, serta terus membangun kinerja yang positif setiap
-                harinya. Sebagai mahasiswa aktif di Universitas Muhammadiyah
-                Prof. Dr. Hamka (UHAMKA) memberikan landasan yang kokoh bagi
-                pengembangan akademis dan pribadi. Pengalaman sebelumnya sebagai
-                Konsultan Penjualan di Wuling Motors Indonesia telah mengasah
-                kompetensi dalam penggalian prospek dan keterlibatan klien.
-                Dengan fokus pada pembelajaran berkelanjutan, berupaya
-                memanfaatkan pengetahuan dan keterampilan untuk menciptakan
-                hasil positif.
+                <span class="desc-short">
+                  Saya adalah seseorang yang optimis dan gigih dalam menemukan
+                  solusi atas berbagai masalah, serta bertanggung jawab terhadap
+                  segala hal yang dikerjakan. Saya sangat tertarik dalam
+                  mempelajari hal-hal baru, terutama di bidang digital dan
+                  teknologi.
+                </span>
+                <span class="desc-more" id="descMore">
+                  Dengan prinsip ini, saya berkomitmen untuk dapat berkontribusi
+                  dengan baik di lingkungan akademik maupun profesional, serta
+                  terus membangun kinerja yang positif setiap harinya. Sebagai
+                  mahasiswa aktif di Universitas Muhammadiyah Prof. Dr. Hamka
+                  (UHAMKA) memberikan landasan yang kokoh bagi pengembangan
+                  akademis dan pribadi. Pengalaman sebelumnya sebagai Konsultan
+                  Penjualan di Wuling Motors Indonesia telah mengasah kompetensi
+                  dalam penggalian prospek dan keterlibatan klien. Dengan fokus
+                  pada pembelajaran berkelanjutan, berupaya memanfaatkan
+                  pengetahuan dan keterampilan untuk menciptakan hasil positif.
+                </span>
+                <br />
+                <button
+                  class="btn-readmore"
+                  id="btnReadMore"
+                  onclick="toggleDesc()"
+                >
+                  Baca Selengkapnya
+                </button>
+              </div>
+
+              <!-- KEMAMPUAN / SKILL -->
+              <span
+                class="section-label reveal"
+                style="margin-top: 2.5rem; display: inline-block"
+                >Kemampuan</span
+              >
+              <h3 class="sub-heading reveal d1">Keahlian Saya</h3>
+              <div class="skills-grid reveal d2">
+                <div class="skill-card">
+                  <h3>Microsoft Office</h3>
+                  <p>
+                    Membuat dokumen resmi, laporan, dan presentasi dengan format
+                    profesional.
+                  </p>
+                </div>
+                <div class="skill-card">
+                  <h3>Social Media</h3>
+                  <p>
+                    Pengelolaan konten dan strategi pemasaran melalui berbagai
+                    platform media sosial.
+                  </p>
+                </div>
+                <div class="skill-card">
+                  <h3>Video Editing</h3>
+                  <p>
+                    Editing video menggunakan CapCut dan VN untuk konten kreatif
+                    dan promosi.
+                  </p>
+                </div>
+                <div class="skill-card">
+                  <h3>Pemasaran</h3>
+                  <p>
+                    Pengalaman langsung dalam penjualan produk dan membangun
+                    relasi bisnis.
+                  </p>
+                </div>
               </div>
 
               <!-- 1. Pengalaman Kerja -->
@@ -161,7 +216,9 @@
                   <h4 class="timeline-title">
                     Universitas Muhammadiyah Prof. Dr. Hamka (Uhamka)
                   </h4>
-                  <p class="timeline-sub">Perguruan Tinggi</p>
+                  <p class="timeline-sub">
+                    Perguruan Tinggi · Teknik Informatika
+                  </p>
                 </div>
                 <div class="timeline-item reveal d2">
                   <p class="timeline-date">2020 – 2023</p>
@@ -222,5 +279,18 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+      function toggleDesc() {
+        var more = document.getElementById("descMore");
+        var btn = document.getElementById("btnReadMore");
+        if (more.classList.contains("show")) {
+          more.classList.remove("show");
+          btn.textContent = "Baca Selengkapnya";
+        } else {
+          more.classList.add("show");
+          btn.textContent = "Tampilkan Lebih Sedikit";
+        }
+      }
+    </script>
   </body>
 </html>
