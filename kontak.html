@@ -18,6 +18,7 @@
             <li><a href="kontak.html" class="active">Kontak</a></li>
           </ul>
         </nav>
+        <button class="dark-toggle" id="darkToggle">Mode Gelap</button>
       </div>
     </header>
 
@@ -44,7 +45,7 @@
               <h2 class="section-heading">Detail Saya</h2>
               <p>
                 Jangan ragu untuk menghubungi saya kapan saja. Saya akan
-                berusaha merespons secepatnya.
+                berusaha merespons secepat mungkin.
               </p>
               <div class="contact-detail-item">
                 <div class="text">
@@ -90,9 +91,12 @@
                     id="nama"
                     name="nama"
                     placeholder="Masukkan nama Anda"
-                    required
                   />
+                  <span class="error-msg" id="errNama"
+                    >Nama tidak boleh kosong.</span
+                  >
                 </div>
+
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input
@@ -100,17 +104,22 @@
                     id="email"
                     name="email"
                     placeholder="contoh@email.com"
-                    required
                   />
+                  <span class="error-msg" id="errEmail"
+                    >Email tidak boleh kosong dan harus valid.</span
+                  >
                 </div>
+
                 <div class="form-group">
                   <label for="pesan">Pesan</label>
                   <textarea
                     id="pesan"
                     name="pesan"
                     placeholder="Tulis pesan Anda di sini..."
-                    required
                   ></textarea>
+                  <span class="error-msg" id="errPesan"
+                    >Pesan tidak boleh kosong.</span
+                  >
                 </div>
 
                 <button type="submit" class="form-submit" id="submitBtn">
@@ -155,22 +164,66 @@
 
     <script src="script.js"></script>
     <script>
-      const form = document.getElementById("contactForm");
-      const btn = document.getElementById("submitBtn");
-      const successMsg = document.getElementById("form-success");
-      const errorMsg = document.getElementById("form-error");
+      var form = document.getElementById("contactForm");
+      var btn = document.getElementById("submitBtn");
+      var successMsg = document.getElementById("form-success");
+      var errorMsg = document.getElementById("form-error");
 
       form.addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        // Loading state
+        // Ambil nilai input
+        var nama = document.getElementById("nama");
+        var email = document.getElementById("email");
+        var pesan = document.getElementById("pesan");
+
+        var errNama = document.getElementById("errNama");
+        var errEmail = document.getElementById("errEmail");
+        var errPesan = document.getElementById("errPesan");
+
+        // Reset error dulu
+        nama.classList.remove("input-error");
+        email.classList.remove("input-error");
+        pesan.classList.remove("input-error");
+        errNama.classList.remove("show");
+        errEmail.classList.remove("show");
+        errPesan.classList.remove("show");
+
+        var valid = true;
+
+        // Cek nama
+        if (nama.value.trim() === "") {
+          nama.classList.add("input-error");
+          errNama.classList.add("show");
+          valid = false;
+        }
+
+        // Cek email — harus isi dan harus ada @ dan titik
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email.value.trim() === "" || !emailRegex.test(email.value.trim())) {
+          email.classList.add("input-error");
+          errEmail.classList.add("show");
+          valid = false;
+        }
+
+        // Cek pesan
+        if (pesan.value.trim() === "") {
+          pesan.classList.add("input-error");
+          errPesan.classList.add("show");
+          valid = false;
+        }
+
+        // Kalau ada yang tidak valid, berhenti di sini
+        if (!valid) return;
+
+        // Kalau semua valid, kirim ke Formspree
         btn.disabled = true;
         btn.textContent = "Mengirim...";
         successMsg.style.display = "none";
         errorMsg.style.display = "none";
 
         try {
-          const response = await fetch("https://formspree.io/f/xgoprkvr", {
+          var response = await fetch("https://formspree.io/f/xgoprkvr", {
             method: "POST",
             body: new FormData(form),
             headers: { Accept: "application/json" },
@@ -179,24 +232,38 @@
           if (response.ok) {
             form.reset();
             successMsg.style.display = "block";
-            setTimeout(() => {
+            setTimeout(function () {
               successMsg.style.display = "none";
             }, 5000);
           } else {
             errorMsg.style.display = "block";
-            setTimeout(() => {
+            setTimeout(function () {
               errorMsg.style.display = "none";
             }, 5000);
           }
         } catch (err) {
           errorMsg.style.display = "block";
-          setTimeout(() => {
+          setTimeout(function () {
             errorMsg.style.display = "none";
           }, 5000);
         }
 
         btn.disabled = false;
         btn.textContent = "Kirim Pesan";
+      });
+
+      // Hapus error saat user mulai ketik
+      document.getElementById("nama").addEventListener("input", function () {
+        this.classList.remove("input-error");
+        document.getElementById("errNama").classList.remove("show");
+      });
+      document.getElementById("email").addEventListener("input", function () {
+        this.classList.remove("input-error");
+        document.getElementById("errEmail").classList.remove("show");
+      });
+      document.getElementById("pesan").addEventListener("input", function () {
+        this.classList.remove("input-error");
+        document.getElementById("errPesan").classList.remove("show");
       });
     </script>
   </body>
