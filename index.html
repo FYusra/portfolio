@@ -1,130 +1,1179 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fadli Yusra | Beranda</title>
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Fadli Yusra | Informatics Engineering · AI · Data · Automation
+    </title>
+    <meta
+      name="description"
+      content="Portfolio of Fadli Yusra — Informatics Engineering student specializing in applied AI, data analytics, workflow automation, and digital transformation in Jakarta, Indonesia."
+    />
+    <meta name="author" content="Fadli Yusra" />
+    <meta
+      name="keywords"
+      content="Fadli Yusra, Informatics Engineering, UHAMKA, AI, Data Analytics, Workflow Automation, Python, SQL, Lark Base, 3D Portfolio"
+    />
+    <meta
+      name="theme-color"
+      content="#090d16"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#2563eb"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <!-- Open Graph (Facebook / LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Fadli Yusra | Informatics Engineering · AI · Data · Automation"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio of Fadli Yusra — Informatics Engineering student specializing in applied AI, data analytics, and workflow automation."
+    />
+    <meta property="og:image" content="hero-photo.jpg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fadli Yusra | AI · Data · Automation" />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Fadli Yusra — Informatics Engineering student, AI and data analytics enthusiast."
+    />
+    <meta name="twitter:image" content="hero-photo.jpg" />
+
+    <!-- Google Fonts: Inter (Preconnected for optimal rendering) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon (modern SVG data URI: FY monogram) -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%233b82f6%22/><text y=%2266%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22Inter,-apple-system,sans-serif%22 font-size=%2248%22 font-weight=%22800%22 fill=%22white%22>FY</text></svg>"
+    />
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Structured Data (JSON-LD) for Search Engines and Recruiters -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Fadli Yusra",
+        "jobTitle": "Procurement Digitalization Intern & Informatics Engineering Student",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "PT Prasetia Dwidharma"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Universitas Muhammadiyah Prof. Dr. Hamka (UHAMKA)"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Jakarta",
+          "addressCountry": "ID"
+        },
+        "email": "mailto:fadliyusra84@gmail.com",
+        "sameAs": ["https://www.linkedin.com/in/fadli-yusra-63a4b825b"],
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Data Analytics",
+          "Workflow Automation",
+          "Python",
+          "SQL",
+          "Lark Base",
+          "Digital Transformation"
+        ]
+      }
+    </script>
   </head>
-  <body>
-    <!-- HEADER -->
-    <header>
+  <body class="dark-mode">
+    <!-- Skip link for keyboard accessibility -->
+    <a href="#main" class="skip-to-content">Skip to content</a>
+
+    <!-- Ambient background glow mesh -->
+    <div class="ambient-glow" aria-hidden="true"></div>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
       <div class="header-inner">
-        <a href="index.html" class="logo-text">My Portofolio<span>.</span></a>
-        <nav>
-          <ul>
-            <li><a href="index.html" class="active">Beranda</a></li>
-            <li><a href="profil.html">Profil</a></li>
-            <li><a href="kontak.html">Kontak</a></li>
+        <a href="#hero" class="logo" aria-label="Fadli Yusra Home"
+          >FY<span>.</span></a
+        >
+
+        <!-- Desktop Navigation -->
+        <nav aria-label="Main navigation">
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
-        <button class="dark-toggle" id="darkToggle">Mode Gelap</button>
+
+        <div class="header-actions">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle light/dark mode"
+          >
+            <!-- Sun icon for light mode -->
+            <svg
+              class="icon-sun"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Moon icon for dark mode -->
+            <svg
+              class="icon-moon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <button
+            class="hamburger"
+            id="hamburger"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="navDrawer"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
       </div>
     </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero-grid container">
+    <!-- Mobile nav overlay and drawer -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+      <div class="nav-overlay-bg" id="navOverlayBg"></div>
+      <nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+        <ul class="nav-drawer-links" id="navDrawerLinks">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="main">
+      <!-- ==================== HERO ==================== -->
+      <section class="hero" id="hero">
+        <!-- 3D Interactive Perspective Canvas -->
+        <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+
+        <div class="container hero-grid">
           <div class="hero-text">
-            <p class="hero-greeting">Halo, saya</p>
+            <div class="status-pill">
+              <span class="status-dot"></span>
+              <span>Available for AI & Automation Projects</span>
+            </div>
+
+            <p class="hero-eyebrow">
+              Hi, I'm <span class="wave" aria-hidden="true">👋</span>
+            </p>
             <h1 class="hero-name">Fadli Yusra</h1>
             <p class="hero-role">
-              Mahasiswa Teknik Informatika · UHAMKA · Jakarta
+              Informatics Engineering Student
+              <span>·</span> AI <span>·</span> Data Analytics
+              <span>·</span> Automation
             </p>
             <p class="hero-desc">
-              Seorang mahasiswa yang optimis dan gigih, dengan latar belakang di
-              bidang Teknik Informatika dan pengalaman nyata dalam pemasaran
-              digital. Tertarik pada dunia teknologi, media sosial, dan
-              pembuatan konten kreatif.
+              I architect data-driven workflows, intelligent automation
+              pipelines, and digital systems — bridging applied artificial
+              intelligence with operational performance.
             </p>
             <div class="hero-btns">
-              <a href="profil.html" class="btn btn-primary">Lihat Profil</a>
-              <a href="kontak.html" class="btn btn-outline">Hubungi Saya</a>
+              <a href="#projects" class="btn btn-primary">
+                View My Work
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#contact" class="btn btn-outline">Connect With Me</a>
+            </div>
+            <div class="hero-social">
+              <!-- Real LinkedIn profile -->
+              <a
+                href="https://www.linkedin.com/in/fadli-yusra-63a4b825b"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fadli Yusra on LinkedIn"
+                title="LinkedIn Profile"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  />
+                  <rect width="4" height="12" x="2" y="9" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+                LinkedIn
+              </a>
+              <!-- GitHub profile -->
+              <a
+                href="https://github.com/FYusra"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fadli Yusra on GitHub"
+                title="GitHub Profile"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                  />
+                  <path d="M9 18c-4.51 2-5-2-7-2" />
+                </svg>
+                GitHub
+              </a>
             </div>
           </div>
 
           <div class="hero-image-wrap">
-            <div class="hero-img-frame">
-              <div class="hero-img-bg"></div>
+            <div class="hero-img-container tilt-card">
               <img
-                src="Fadli Yusra.jpg"
-                alt="Foto Fadli Yusra"
-                class="hero-img-main"
-                onerror="
-                  this.style.background = '#e0d9ce';
-                  this.alt = 'Foto tidak ditemukan';
-                "
+                src="hero-photo.jpg"
+                alt="Fadli Yusra — Informatics Engineering student in professional suit"
+                width="340"
+                height="420"
+                fetchpriority="high"
+                decoding="async"
               />
+              <div class="card-glare"></div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- SKILLS -->
-      <section class="skills-section">
+      <!-- ==================== ABOUT ==================== -->
+      <section id="about">
         <div class="container">
-          <h2 class="section-heading reveal">Kemampuan</h2>
-          <div class="skills-grid">
-            <div class="skill-card reveal d1">
-              <h3>Microsoft Office</h3>
-              <p>
-                Membuat dokumen resmi, laporan, dan presentasi dengan format
-                profesional.
-              </p>
+          <div class="about-grid">
+            <div class="about-photo-wrap reveal from-left">
+              <div
+                class="tilt-card"
+                style="border-radius: var(--radius-md); overflow: hidden"
+              >
+                <img
+                  src="Fadli Yusra 2.jpg"
+                  alt="Fadli Yusra in professional attire"
+                  class="about-photo"
+                  loading="lazy"
+                  decoding="async"
+                  width="280"
+                  height="373"
+                />
+                <div class="card-glare"></div>
+              </div>
             </div>
-            <div class="skill-card reveal d2">
-              <h3>Social Media</h3>
-              <p>
-                Pengelolaan konten dan strategi pemasaran melalui berbagai
-                platform media sosial.
+
+            <div class="about-content">
+              <span class="section-eyebrow reveal">About Me</span>
+              <h2 class="section-title reveal d1">
+                Building at the intersection of technology and business.
+              </h2>
+
+              <p class="about-text reveal d2">
+                I'm an Informatics Engineering student at Universitas
+                Muhammadiyah Prof. Dr. Hamka (UHAMKA) based in Jakarta,
+                Indonesia. My academic coursework and project experience center
+                on artificial intelligence, data analytics, workflow automation,
+                and digital transformation.
               </p>
+
+              <p class="about-text reveal d3">
+                Through my role at PT Prasetia Dwidharma, I focus on procurement
+                digitalization — building automated data validation scripts,
+                monitoring operational KPIs, orchestrating cross-platform
+                synchronizations with Python and Lark, and transforming complex
+                business processes into efficient digital pipelines.
+              </p>
+
+              <div class="about-highlights reveal d4">
+                <div class="about-highlight-item tilt-card">
+                  <span class="ahi-icon" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                      ></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </span>
+                  <div class="ahi-text">
+                    <span class="ahi-label">Location</span>
+                    Jakarta, Indonesia
+                  </div>
+                </div>
+                <div class="about-highlight-item tilt-card">
+                  <span class="ahi-icon" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                  </span>
+                  <div class="ahi-text">
+                    <span class="ahi-label">University</span>
+                    UHAMKA — Informatics Engineering
+                  </div>
+                </div>
+                <div class="about-highlight-item tilt-card">
+                  <span class="ahi-icon" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect
+                        x="2"
+                        y="7"
+                        width="20"
+                        height="14"
+                        rx="2"
+                        ry="2"
+                      ></rect>
+                      <path
+                        d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"
+                      ></path>
+                    </svg>
+                  </span>
+                  <div class="ahi-text">
+                    <span class="ahi-label">Current Role</span>
+                    Procurement Digitalization Intern
+                  </div>
+                </div>
+                <div class="about-highlight-item tilt-card">
+                  <span class="ahi-icon" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <div class="ahi-text">
+                    <span class="ahi-label">Focus Areas</span>
+                    AI, Data Analytics, Automation
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="skill-card reveal d3">
-              <h3>Video Editing</h3>
-              <p>
-                Editing video menggunakan CapCut dan VN untuk konten kreatif dan
-                promosi.
-              </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== EXPERIENCE ==================== -->
+      <section id="experience">
+        <div class="container">
+          <span class="section-eyebrow reveal">Experience</span>
+          <h2 class="section-title reveal d1">Professional Experience</h2>
+          <p class="section-subtitle reveal d2">
+            Hands-on experience in data-driven workflows, digital systems, and
+            enterprise operations.
+          </p>
+
+          <div class="timeline" role="list">
+            <!-- Experience 1: Prasetia -->
+            <div class="timeline-item reveal d3" role="listitem">
+              <p class="timeline-date">Jun 2026 – Sep 2026</p>
+              <h3 class="timeline-role">
+                Procurement Digitalization & Automation Intern
+              </h3>
+              <p class="timeline-company">PT Prasetia Dwidharma</p>
+              <ul class="timeline-bullets">
+                <li>
+                  Spearheaded data validation and auditing workflows across
+                  procurement records using custom Python scripts
+                </li>
+                <li>
+                  Built and monitored automated operational KPI dashboards to
+                  ensure real-time reporting consistency
+                </li>
+                <li>
+                  Designed automated record synchronization and update pipelines
+                  utilizing Lark Base and Lark AnyCross
+                </li>
+                <li>
+                  Validated and reconciled enterprise data using Oracle NetSuite
+                  and advanced Microsoft Excel models
+                </li>
+                <li>
+                  Collaborated with cross-functional business stakeholders to
+                  translate operational bottlenecks into digital solutions
+                </li>
+                <li>
+                  Authored technical documentation for automation logic, error
+                  troubleshooting, and standard operating procedures
+                </li>
+              </ul>
             </div>
-            <div class="skill-card reveal d4">
-              <h3>Pemasaran</h3>
-              <p>
-                Pengalaman langsung dalam penjualan produk dan membangun relasi
-                bisnis.
-              </p>
+
+            <!-- Experience 2: Wuling -->
+            <div class="timeline-item reveal d4" role="listitem">
+              <p class="timeline-date">Jul 2023 – Oct 2023</p>
+              <h3 class="timeline-role">Sales Consultant</h3>
+              <p class="timeline-company">Wuling Maju Motor</p>
+              <ul class="timeline-bullets">
+                <li>
+                  Analyzed customer requirements and recommended optimal product
+                  configurations in a consultative environment
+                </li>
+                <li>
+                  Maintained CRM communication channels and managed client
+                  relationship workflows through after-sales stages
+                </li>
+                <li>
+                  Honed interpersonal communication, problem-solving, and
+                  negotiation skills under monthly performance objectives
+                </li>
+              </ul>
             </div>
-            <div class="skill-card reveal d1">
-              <h3>Web Development</h3>
-              <p>
-                Membangun website menggunakan HTML, CSS, dan JavaScript dasar
-                yang responsif.
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== PROJECTS ==================== -->
+      <section id="projects">
+        <div class="container">
+          <span class="section-eyebrow reveal">Projects</span>
+          <h2 class="section-title reveal d1">Selected Work</h2>
+          <p class="section-subtitle reveal d2">
+            Engineering practical applications in automation, data validation,
+            and web platforms.
+          </p>
+
+          <div class="projects-grid">
+            <!-- Project 1: KPI Monitoring -->
+            <article class="project-card tilt-card reveal d3">
+              <span class="project-category">Automation · Data Systems</span>
+              <h3 class="project-title">
+                Procurement KPI Monitoring & Automation
+              </h3>
+              <p class="project-desc">
+                Engineered an end-to-end data processing and KPI monitoring
+                architecture for corporate procurement. Implemented record
+                queries, automated filtering, iterative loop routines, and
+                automated record creation/updates to eliminate data redundancy
+                and ensure audit-ready integrity.
               </p>
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">SQL</span>
+                <span class="project-tag">Lark Base</span>
+                <span class="project-tag">Lark AnyCross</span>
+                <span class="project-tag">Data Validation</span>
+              </div>
+              <div class="card-glare"></div>
+            </article>
+
+            <!-- Project 2: DigiMenu -->
+            <article class="project-card tilt-card reveal d4">
+              <span class="project-category">Web Platform</span>
+              <h3 class="project-title">DigiMenu</h3>
+              <p class="project-desc">
+                A responsive digital ordering and menu management application
+                built with Laravel and MySQL. Features structured item
+                categorizations, real-time database querying, and a high-speed
+                mobile-first menu presentation.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">PHP</span>
+                <span class="project-tag">Laravel</span>
+                <span class="project-tag">MySQL</span>
+                <span class="project-tag">HTML5 / CSS3</span>
+              </div>
+              <div class="card-glare"></div>
+            </article>
+
+            <!-- Project 3: KossMart -->
+            <article class="project-card tilt-card reveal d5">
+              <span class="project-category">Web Platform</span>
+              <h3 class="project-title">KossMart</h3>
+              <p class="project-desc">
+                A database-driven student marketplace and listing web
+                application. Provides search filtering, relational database
+                models, dynamic listing management, and an intuitive responsive
+                UI.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">PHP</span>
+                <span class="project-tag">Laravel</span>
+                <span class="project-tag">MySQL</span>
+                <span class="project-tag">JavaScript</span>
+              </div>
+              <div class="card-glare"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SKILLS ==================== -->
+      <section id="skills">
+        <div class="container">
+          <span class="section-eyebrow reveal">Skills</span>
+          <h2 class="section-title reveal d1">Tools & Technologies</h2>
+          <p class="section-subtitle reveal d2">
+            Core technical competencies and tools applied in real-world
+            workflows.
+          </p>
+
+          <div class="skills-categories">
+            <!-- Programming -->
+            <div class="skill-group tilt-card reveal d3">
+              <div class="skill-group-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <h3 class="skill-group-title">Programming Languages</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">PHP / Laravel</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">HTML5 / CSS3</span>
+              </div>
+              <div class="card-glare"></div>
             </div>
-            <div class="skill-card reveal d2">
-              <h3>Ethical Hacking</h3>
-              <p>
-                Pemahaman dasar keamanan siber, teknik phishing awareness, dan
-                proteksi data digital.
-              </p>
+
+            <!-- Data & Analytics -->
+            <div class="skill-group tilt-card reveal d4">
+              <div class="skill-group-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+              <h3 class="skill-group-title">Data & Analytics</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Data Validation</span>
+                <span class="skill-tag">KPI Monitoring</span>
+                <span class="skill-tag">Dashboard Reporting</span>
+                <span class="skill-tag">Data Auditing</span>
+                <span class="skill-tag">Microsoft Excel</span>
+              </div>
+              <div class="card-glare"></div>
             </div>
-            <div class="skill-card reveal d3">
-              <h3>Trading Analyst</h3>
-              <p>
-                Analisis pergerakan forex, pasar saham dan aset kripto
-                menggunakan analisis teknikal dasar.
+
+            <!-- Automation & Systems -->
+            <div class="skill-group tilt-card reveal d3">
+              <div class="skill-group-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polygon
+                    points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                  ></polygon>
+                </svg>
+              </div>
+              <h3 class="skill-group-title">Automation & Enterprise Systems</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Workflow Automation</span>
+                <span class="skill-tag">Lark Base</span>
+                <span class="skill-tag">Lark AnyCross</span>
+                <span class="skill-tag">Oracle NetSuite</span>
+                <span class="skill-tag">API Integration</span>
+              </div>
+              <div class="card-glare"></div>
+            </div>
+
+            <!-- Business & Collaboration -->
+            <div class="skill-group tilt-card reveal d4">
+              <div class="skill-group-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h3 class="skill-group-title">Process & Collaboration</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Business Process Analysis</span>
+                <span class="skill-tag">Technical Documentation</span>
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Cross-functional Collaboration</span>
+              </div>
+              <div class="card-glare"></div>
+            </div>
+          </div>
+
+          <!-- AI Specialization Spotlight -->
+          <div class="skill-group-ai tilt-card reveal d5">
+            <div class="skill-group-header">
+              <div
+                class="skill-group-icon"
+                aria-hidden="true"
+                style="margin-bottom: 0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                  <rect x="9" y="9" width="6" height="6"></rect>
+                  <line x1="9" y1="1" x2="9" y2="4"></line>
+                  <line x1="15" y1="1" x2="15" y2="4"></line>
+                  <line x1="9" y1="20" x2="9" y2="23"></line>
+                  <line x1="15" y1="20" x2="15" y2="23"></line>
+                  <line x1="20" y1="9" x2="23" y2="9"></line>
+                  <line x1="20" y1="14" x2="23" y2="14"></line>
+                  <line x1="1" y1="9" x2="4" y2="9"></line>
+                  <line x1="1" y1="14" x2="4" y2="14"></line>
+                </svg>
+              </div>
+              <h3 class="skill-group-title">Artificial Intelligence Focus</h3>
+            </div>
+            <p>
+              AI is my primary academic specialization. I actively study applied
+              machine learning, prompt engineering, and the integration of LLMs
+              with automated enterprise workflows to power intelligent,
+              data-driven decisions.
+            </p>
+            <div class="skill-tags">
+              <span class="skill-tag">Applied Machine Learning</span>
+              <span class="skill-tag">LLM Workflows</span>
+              <span class="skill-tag">Prompt Engineering</span>
+              <span class="skill-tag">Intelligent Automation</span>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== EDUCATION ==================== -->
+      <section id="education">
+        <div class="container">
+          <span class="section-eyebrow reveal">Education & Achievements</span>
+          <h2 class="section-title reveal d1">Academic Background</h2>
+
+          <div class="education-grid">
+            <!-- University Degree -->
+            <div class="edu-card tilt-card reveal d2">
+              <div class="edu-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </div>
+              <h3 class="edu-degree">Bachelor of Informatics Engineering</h3>
+              <p class="edu-school">
+                Universitas Muhammadiyah Prof. Dr. Hamka (UHAMKA)
               </p>
+              <p class="edu-date">2024 – Present</p>
+              <span class="edu-gpa">GPA: 3.22 / 4.00</span>
+              <div class="edu-interests">
+                <span class="skill-tag">Artificial Intelligence</span>
+                <span class="skill-tag">Database Systems</span>
+                <span class="skill-tag">Software Engineering</span>
+                <span class="skill-tag">Algorithms & Data Structures</span>
+                <span class="skill-tag">Computer Networks</span>
+              </div>
+              <div class="card-glare"></div>
+            </div>
+
+            <!-- Academic Achievement -->
+            <div class="achievement-card tilt-card reveal d3">
+              <div class="achievement-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="8" r="7"></circle>
+                  <polyline
+                    points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"
+                  ></polyline>
+                </svg>
+              </div>
+              <div>
+                <h3 class="achievement-title">Presenter — FUSION 2024</h3>
+                <p class="achievement-detail">
+                  Selected presenter at FUSION 2024, a national academic
+                  symposium organized by Universitas Terbuka, presenting
+                  research insights on technology and educational innovation.
+                </p>
+              </div>
+              <div class="card-glare"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CONTACT ==================== -->
+      <section id="contact">
+        <div class="container">
+          <span class="section-eyebrow reveal">Contact</span>
+          <h2 class="section-title reveal d1">Let's Connect</h2>
+          <p class="section-subtitle reveal d2">
+            Interested in discussing AI applications, workflow automation, or
+            technical collaboration? Reach out directly.
+          </p>
+
+          <div class="contact-grid">
+            <!-- Contact info card -->
+            <div class="contact-info tilt-card reveal d3">
+              <h3>Direct Channels</h3>
+              <p>
+                Connect with me directly via email, WhatsApp, or through
+                professional networks.
+              </p>
+
+              <div class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    ></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-item-label">Email</span>
+                  <span class="contact-item-value">
+                    <a href="mailto:fadliyusra84@gmail.com"
+                      >fadliyusra84@gmail.com</a
+                    >
+                  </span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                    ></path>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-item-label">WhatsApp / Phone</span>
+                  <span class="contact-item-value">
+                    <a
+                      href="https://wa.me/6281380849729"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >+62 813-8084-9729</a
+                    >
+                  </span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-item-label">Location</span>
+                  <span class="contact-item-value">Jakarta, Indonesia</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                    ></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-item-label">LinkedIn</span>
+                  <span class="contact-item-value">
+                    <a
+                      href="https://www.linkedin.com/in/fadli-yusra-63a4b825b"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >fadli-yusra-63a4b825b</a
+                    >
+                  </span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                    ></path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-item-label">GitHub</span>
+                  <span class="contact-item-value">
+                    <a
+                      href="https://github.com/FYusra"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >View GitHub Profile</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="card-glare"></div>
+            </div>
+
+            <!-- Contact form card -->
+            <div class="contact-form-card tilt-card reveal d4">
+              <h3>Transmit a Message</h3>
+              <p>
+                Fill out the parameters below and I will respond to your
+                communication promptly.
+              </p>
+
+              <form
+                id="contactForm"
+                action="https://formspree.io/f/xgoprkvr"
+                method="POST"
+                novalidate
+              >
+                <div class="form-group">
+                  <label for="name">Your Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="e.g. John Doe"
+                    autocomplete="name"
+                    required
+                    aria-describedby="errName"
+                  />
+                  <span class="error-msg" id="errName" role="alert"
+                    >Please enter your name (at least 2 characters).</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Your Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="e.g. john@example.com"
+                    autocomplete="email"
+                    required
+                    aria-describedby="errEmail"
+                  />
+                  <span class="error-msg" id="errEmail" role="alert"
+                    >Please enter a valid email address.</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Your Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your message or inquiry here..."
+                    required
+                    aria-describedby="errMessage"
+                  ></textarea>
+                  <span class="error-msg" id="errMessage" role="alert"
+                    >Please enter a message (at least 10 characters).</span
+                  >
+                </div>
+
+                <!-- Anti-bot honeypot -->
+                <div
+                  style="position: absolute; left: -9999px"
+                  aria-hidden="true"
+                >
+                  <label for="_gotcha">Leave this field blank</label>
+                  <input
+                    type="text"
+                    id="_gotcha"
+                    name="_gotcha"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <button type="submit" class="form-submit" id="submitBtn">
+                  <span>Send Message</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+
+                <div
+                  class="form-feedback"
+                  id="formFeedback"
+                  role="status"
+                  aria-live="polite"
+                ></div>
+              </form>
+              <div class="card-glare"></div>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-      <p>&copy; 2026 <span>Fadli Yusra</span>. Semua Hak Dilindungi.</p>
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>
+          &copy; 2026 Fadli Yusra. Built with high-performance 3D canvas, modern
+          CSS, and vanilla JavaScript.
+        </p>
+      </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="script.js"></script>
   </body>
 </html>
