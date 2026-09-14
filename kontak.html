@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fadli Yusra | Kontak</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="header-inner">
+        <a href="index.html" class="logo-text">My Portofolio<span>.</span></a>
+        <nav>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="kontak.html" class="active">Kontak</a></li>
+          </ul>
+        </nav>
+        <button class="dark-toggle" id="darkToggle">Mode Gelap</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- PAGE HERO -->
+      <div class="page-hero" data-bg="KONTAK">
+        <span class="section-label">Hubungi Saya</span>
+        <h1 class="section-heading">Mari Terhubung</h1>
+        <p>
+          Ada pertanyaan atau ingin berkolaborasi? Kirim pesan dan saya akan
+          segera membalas.
+        </p>
+      </div>
+
+      <!-- CONTACT CONTENT -->
+      <section class="contact-section">
+        <div class="container">
+          <div class="contact-grid">
+            <!-- LEFT: Info Kontak -->
+            <div class="contact-info-box reveal from-left">
+              <span class="section-label" style="color: var(--gold)"
+                >Info Kontak</span
+              >
+              <h2 class="section-heading">Detail Saya</h2>
+              <p>
+                Jangan ragu untuk menghubungi saya kapan saja. Saya akan
+                berusaha merespons secepat mungkin.
+              </p>
+              <div class="contact-detail-item">
+                <div class="text">
+                  <strong>Email</strong>
+                  <span>fadliyusra84@gmail.com</span>
+                </div>
+              </div>
+              <div class="contact-detail-item">
+                <div class="text">
+                  <strong>WhatsApp / Telepon</strong>
+                  <span>+62813-8084-9729</span>
+                </div>
+              </div>
+              <div class="contact-detail-item">
+                <div class="text">
+                  <strong>Alamat</strong>
+                  <span>Pondok Bambu, Jakarta Timur 13430</span>
+                </div>
+              </div>
+              <div class="contact-detail-item">
+                <div class="text">
+                  <strong>Jam Respons</strong>
+                  <span>Senin – Jumat, 09.00 – 17.00 WIB</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: Form Kontak -->
+            <div class="contact-form-box reveal from-right">
+              <span class="section-label">Kirim Pesan</span>
+              <h2
+                class="section-heading"
+                style="font-size: 1.8rem; margin-bottom: 2rem"
+              >
+                Formulir Kontak
+              </h2>
+
+              <form id="contactForm">
+                <div class="form-group">
+                  <label for="nama">Nama</label>
+                  <input
+                    type="text"
+                    id="nama"
+                    name="nama"
+                    placeholder="Masukkan nama Anda"
+                  />
+                  <span class="error-msg" id="errNama"
+                    >Nama tidak boleh kosong.</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="contoh@email.com"
+                  />
+                  <span class="error-msg" id="errEmail"
+                    >Email tidak boleh kosong dan harus valid.</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="pesan">Pesan</label>
+                  <textarea
+                    id="pesan"
+                    name="pesan"
+                    placeholder="Tulis pesan Anda di sini..."
+                  ></textarea>
+                  <span class="error-msg" id="errPesan"
+                    >Pesan tidak boleh kosong.</span
+                  >
+                </div>
+
+                <button type="submit" class="form-submit" id="submitBtn">
+                  Kirim Pesan
+                </button>
+
+                <p
+                  id="form-success"
+                  style="
+                    display: none;
+                    margin-top: 1rem;
+                    color: #10b981;
+                    font-weight: 600;
+                    text-align: center;
+                  "
+                >
+                  Pesan berhasil dikirim! Terima kasih.
+                </p>
+                <p
+                  id="form-error"
+                  style="
+                    display: none;
+                    margin-top: 1rem;
+                    color: #e63946;
+                    font-weight: 600;
+                    text-align: center;
+                  "
+                >
+                  Gagal mengirim. Coba lagi beberapa saat.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2026 <span>Fadli Yusra</span>. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      var form = document.getElementById("contactForm");
+      var btn = document.getElementById("submitBtn");
+      var successMsg = document.getElementById("form-success");
+      var errorMsg = document.getElementById("form-error");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        // Ambil nilai input
+        var nama = document.getElementById("nama");
+        var email = document.getElementById("email");
+        var pesan = document.getElementById("pesan");
+
+        var errNama = document.getElementById("errNama");
+        var errEmail = document.getElementById("errEmail");
+        var errPesan = document.getElementById("errPesan");
+
+        // Reset error dulu
+        nama.classList.remove("input-error");
+        email.classList.remove("input-error");
+        pesan.classList.remove("input-error");
+        errNama.classList.remove("show");
+        errEmail.classList.remove("show");
+        errPesan.classList.remove("show");
+
+        var valid = true;
+
+        // Cek nama
+        if (nama.value.trim() === "") {
+          nama.classList.add("input-error");
+          errNama.classList.add("show");
+          valid = false;
+        }
+
+        // Cek email — harus isi dan harus ada @ dan titik
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email.value.trim() === "" || !emailRegex.test(email.value.trim())) {
+          email.classList.add("input-error");
+          errEmail.classList.add("show");
+          valid = false;
+        }
+
+        // Cek pesan
+        if (pesan.value.trim() === "") {
+          pesan.classList.add("input-error");
+          errPesan.classList.add("show");
+          valid = false;
+        }
+
+        // Kalau ada yang tidak valid, berhenti di sini
+        if (!valid) return;
+
+        // Kalau semua valid, kirim ke Formspree
+        btn.disabled = true;
+        btn.textContent = "Mengirim...";
+        successMsg.style.display = "none";
+        errorMsg.style.display = "none";
+
+        try {
+          var response = await fetch("https://formspree.io/f/xgoprkvr", {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+
+          if (response.ok) {
+            form.reset();
+            successMsg.style.display = "block";
+            setTimeout(function () {
+              successMsg.style.display = "none";
+            }, 5000);
+          } else {
+            errorMsg.style.display = "block";
+            setTimeout(function () {
+              errorMsg.style.display = "none";
+            }, 5000);
+          }
+        } catch (err) {
+          errorMsg.style.display = "block";
+          setTimeout(function () {
+            errorMsg.style.display = "none";
+          }, 5000);
+        }
+
+        btn.disabled = false;
+        btn.textContent = "Kirim Pesan";
+      });
+
+      // Hapus error saat user mulai ketik
+      document.getElementById("nama").addEventListener("input", function () {
+        this.classList.remove("input-error");
+        document.getElementById("errNama").classList.remove("show");
+      });
+      document.getElementById("email").addEventListener("input", function () {
+        this.classList.remove("input-error");
+        document.getElementById("errEmail").classList.remove("show");
+      });
+      document.getElementById("pesan").addEventListener("input", function () {
+        this.classList.remove("input-error");
+        document.getElementById("errPesan").classList.remove("show");
+      });
+    </script>
+  </body>
+</html>
