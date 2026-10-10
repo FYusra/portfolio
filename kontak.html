@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>Fadli Yusra | Contact & Collaboration</title>
+    <meta
+      name="description"
+      content="Get in touch with Fadli Yusra — open for software development, applied AI, workflow automation, and data analytics inquiries in Jakarta, Indonesia."
+    />
+    <meta name="author" content="Fadli Yusra" />
+    <meta
+      name="keywords"
+      content="Fadli Yusra, Contact, Hire, Software Engineering, AI, Automation, Jakarta, UHAMKA"
+    />
+    <meta
+      name="theme-color"
+      content="#090d16"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#2563eb"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Fadli Yusra | Contact & Collaboration" />
+    <meta
+      property="og:description"
+      content="Reach out to Fadli Yusra for inquiries in software development, AI, data, and workflow automation."
+    />
+    <meta property="og:image" content="hero-photo.jpg" />
+
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%233b82f6%22/><text y=%2266%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22Inter,-apple-system,sans-serif%22 font-size=%2248%22 font-weight=%22800%22 fill=%22white%22>FY</text></svg>"
+    />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="dark-mode">
+    <!-- Skip link for keyboard accessibility -->
+    <a href="#main" class="skip-to-content">Skip to content</a>
+
+    <!-- Ambient background glow mesh -->
+    <div class="ambient-glow" aria-hidden="true"></div>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+      <div class="header-inner">
+        <a href="index.html" class="logo" aria-label="Fadli Yusra Home"
+          >FY<span>.</span></a
+        >
+
+        <!-- Desktop Navigation -->
+        <nav aria-label="Main navigation">
+          <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profil.html">Profile</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="kontak.html" class="active">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle light/dark mode"
+          >
+            <!-- Sun icon for light mode -->
+            <svg
+              class="icon-sun"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Moon icon for dark mode -->
+            <svg
+              class="icon-moon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <button
+            class="hamburger"
+            id="hamburger"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="navDrawer"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+      <div class="nav-overlay-bg" id="navOverlayBg"></div>
+      <nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+        <ul class="nav-drawer-links" id="navDrawerLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="profil.html">Profile</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="kontak.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="main">
+      <!-- Subpage Hero Header -->
+      <section class="page-hero">
+        <div class="container">
+          <span class="section-eyebrow reveal">Get In Touch</span>
+          <h1 class="section-title reveal d1">Initiate Contact</h1>
+          <p class="section-subtitle reveal d2">
+            Have a project, internship opportunity, or technical inquiry? Reach
+            out through the channels below or submit a direct message.
+          </p>
+        </div>
+      </section>
+
+      <!-- Contact Body Section -->
+      <section style="padding: 4rem 0 6rem">
+        <div class="container">
+          <div class="contact-grid">
+            <!-- LEFT: Direct Communication Channels -->
+            <div class="contact-info tilt-card reveal from-left">
+              <h3>Direct Channels</h3>
+              <p>
+                I am actively seeking software engineering, applied AI, and
+                workflow automation opportunities. Feel free to connect or drop
+                a line anytime.
+              </p>
+
+              <!-- Email -->
+              <div class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    ></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-item-label">Direct Email</span>
+                  <span class="contact-item-value">
+                    <a href="mailto:fadliyusra84@gmail.com"
+                      >fadliyusra84@gmail.com</a
+                    >
+                  </span>
+                </div>
+              </div>
+
+              <!-- LinkedIn -->
+              <div class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                    ></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-item-label">LinkedIn Profile</span>
+                  <span class="contact-item-value">
+                    <a
+                      href="https://www.linkedin.com/in/fadli-yusra-63a4b825b"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >linkedin.com/in/fadli-yusra-63a4b825b</a
+                    >
+                  </span>
+                </div>
+              </div>
+
+              <!-- GitHub -->
+              <div class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                    ></path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-item-label">GitHub Workspace</span>
+                  <span class="contact-item-value">
+                    <a
+                      href="https://github.com/FYusra"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >github.com/FYusra</a
+                    >
+                  </span>
+                </div>
+              </div>
+
+              <!-- Location -->
+              <div class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-item-label">Location</span>
+                  <span class="contact-item-value">Jakarta, Indonesia</span>
+                </div>
+              </div>
+
+              <div class="card-glare"></div>
+            </div>
+
+            <!-- RIGHT: Formspree Contact Form -->
+            <div class="contact-form-card tilt-card reveal from-right">
+              <h3>Transmit a Message</h3>
+              <p>
+                Fill out the fields below to send a validated message directly
+                to my inbox.
+              </p>
+
+              <form
+                id="contactForm"
+                action="https://formspree.io/f/xgoprkvr"
+                method="POST"
+                novalidate
+              >
+                <div class="form-group">
+                  <label for="name">Your Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="e.g. Alex Morgan"
+                    autocomplete="name"
+                    required
+                    aria-describedby="errName"
+                  />
+                  <span class="error-msg" id="errName" role="alert"
+                    >Please enter your name (at least 2 characters).</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Your Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="e.g. alex@example.com"
+                    autocomplete="email"
+                    required
+                    aria-describedby="errEmail"
+                  />
+                  <span class="error-msg" id="errEmail" role="alert"
+                    >Please enter a valid email address.</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Your Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your message or inquiry here..."
+                    required
+                    aria-describedby="errMessage"
+                  ></textarea>
+                  <span class="error-msg" id="errMessage" role="alert"
+                    >Please enter a message (at least 10 characters).</span
+                  >
+                </div>
+
+                <!-- Anti-bot honeypot -->
+                <div
+                  style="position: absolute; left: -9999px"
+                  aria-hidden="true"
+                >
+                  <label for="_gotcha">Leave this field blank</label>
+                  <input
+                    type="text"
+                    id="_gotcha"
+                    name="_gotcha"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <button type="submit" class="form-submit" id="submitBtn">
+                  <span>Send Message</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+
+                <div
+                  class="form-feedback"
+                  id="formFeedback"
+                  role="status"
+                  aria-live="polite"
+                ></div>
+              </form>
+              <div class="card-glare"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>
+          &copy; 2026 Fadli Yusra. Built with high-performance 3D canvas, modern
+          CSS, and vanilla JavaScript.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>

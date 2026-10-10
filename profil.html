@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>Fadli Yusra | Profile & Experience</title>
+    <meta
+      name="description"
+      content="Professional profile of Fadli Yusra — Informatics Engineering student at UHAMKA, specializing in software development, AI & data analytics, workflow automation, and digital transformation."
+    />
+    <meta name="author" content="Fadli Yusra" />
+    <meta
+      name="keywords"
+      content="Fadli Yusra, Profile, Informatics Engineering, UHAMKA, PT Prasetia Dwidharma, Automation, Software Development, Jakarta"
+    />
+    <meta
+      name="theme-color"
+      content="#090d16"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#2563eb"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Fadli Yusra | Profile & Experience" />
+    <meta
+      property="og:description"
+      content="Informatics Engineering student with practical exposure to enterprise workflow automation, data analytics, and software development."
+    />
+    <meta property="og:image" content="Fadli Yusra 2.jpg" />
+
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%233b82f6%22/><text y=%2266%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22Inter,-apple-system,sans-serif%22 font-size=%2248%22 font-weight=%22800%22 fill=%22white%22>FY</text></svg>"
+    />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="dark-mode">
+    <!-- Skip link for keyboard accessibility -->
+    <a href="#main" class="skip-to-content">Skip to content</a>
+
+    <!-- Ambient background glow mesh -->
+    <div class="ambient-glow" aria-hidden="true"></div>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+      <div class="header-inner">
+        <a href="index.html" class="logo" aria-label="Fadli Yusra Home"
+          >FY<span>.</span></a
+        >
+
+        <!-- Desktop Navigation -->
+        <nav aria-label="Main navigation">
+          <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profil.html" class="active">Profile</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="kontak.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle light/dark mode"
+          >
+            <!-- Sun icon for light mode -->
+            <svg
+              class="icon-sun"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Moon icon for dark mode -->
+            <svg
+              class="icon-moon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <button
+            class="hamburger"
+            id="hamburger"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="navDrawer"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+      <div class="nav-overlay-bg" id="navOverlayBg"></div>
+      <nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+        <ul class="nav-drawer-links" id="navDrawerLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="profil.html" class="active">Profile</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="kontak.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="main">
+      <!-- Subpage Hero Header -->
+      <section class="page-hero">
+        <div class="container">
+          <span class="section-eyebrow reveal">Professional Profile</span>
+          <h1 class="section-title reveal d1">About Fadli Yusra</h1>
+          <p class="section-subtitle reveal d2">
+            Informatics Engineering student with practical exposure to
+            enterprise workflow automation, data systems, and web development.
+          </p>
+        </div>
+      </section>
+
+      <!-- Profile Body Section -->
+      <section style="padding: 4rem 0 6rem">
+        <div class="container">
+          <div class="profile-page-grid">
+            <!-- LEFT: Quick Profile Card (Sticky) -->
+            <aside class="profile-sidebar-card tilt-card reveal from-left">
+              <div class="profile-avatar-wrap">
+                <img
+                  src="Fadli Yusra 2.jpg"
+                  alt="Portrait of Fadli Yusra"
+                  loading="lazy"
+                />
+              </div>
+
+              <h2 class="profile-card-name">Fadli Yusra</h2>
+              <p class="profile-card-role">Informatics Engineering Student</p>
+
+              <ul class="profile-quick-list">
+                <li class="profile-quick-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <div>
+                    <strong>Location</strong>
+                    <span>Jakarta, Indonesia</span>
+                  </div>
+                </li>
+
+                <li class="profile-quick-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                  <div>
+                    <strong>Education</strong>
+                    <span>UHAMKA (2024 – Present)</span>
+                  </div>
+                </li>
+
+                <li class="profile-quick-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect
+                      x="2"
+                      y="7"
+                      width="20"
+                      height="14"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                  <div>
+                    <strong>Recent Internship</strong>
+                    <span>PT Prasetia Dwidharma</span>
+                  </div>
+                </li>
+
+                <li class="profile-quick-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                    ></path>
+                  </svg>
+                  <div>
+                    <strong>Focus Areas</strong>
+                    <span>AI · Data Analytics · Automation</span>
+                  </div>
+                </li>
+              </ul>
+
+              <div style="display: flex; gap: 0.75rem; margin-top: 1rem">
+                <a
+                  href="https://www.linkedin.com/in/fadli-yusra-63a4b825b"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-secondary"
+                  style="flex: 1; padding: 0.65rem 1rem; font-size: 0.85rem"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="kontak.html"
+                  class="btn btn-primary"
+                  style="flex: 1; padding: 0.65rem 1rem; font-size: 0.85rem"
+                >
+                  Contact
+                </a>
+              </div>
+              <div class="card-glare"></div>
+            </aside>
+
+            <!-- RIGHT: Detailed Sections Stack -->
+            <div class="profile-sections-stack">
+              <!-- Professional Biography -->
+              <article class="profile-content-block tilt-card reveal d1">
+                <h2>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  Professional Biography
+                </h2>
+                <p style="margin-bottom: 1rem; line-height: 1.8">
+                  I am an Informatics Engineering undergraduate student at
+                  Universitas Muhammadiyah Prof. Dr. Hamka (UHAMKA) based in
+                  Jakarta, Indonesia. My work centers on software development,
+                  data analytics, workflow automation, and exploring applied AI
+                  capabilities.
+                </p>
+                <p style="margin-bottom: 1rem; line-height: 1.8">
+                  During my internship at <strong>PT Prasetia Dwidharma</strong>
+                  (June–September 2026), I operated as a Procurement
+                  Digitalization & Automation Intern. I designed automated
+                  record synchronization workflows using Lark Base and Lark
+                  AnyCross, built operational KPI monitoring dashboards, and
+                  automated repetitive verification routines to maintain high
+                  data integrity across procurement records.
+                </p>
+                <p style="line-height: 1.8">
+                  Before transitioning deeply into technology and engineering, I
+                  gained valuable consultative and commercial experience as a
+                  Sales Consultant at Wuling Motors. This background sharpened
+                  my ability to understand operational requirements, communicate
+                  effectively with stakeholders, and translate business friction
+                  into structured technical solutions.
+                </p>
+                <div class="card-glare"></div>
+              </article>
+
+              <!-- Education & Academic Foundation -->
+              <article class="profile-content-block tilt-card reveal d2">
+                <h2>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                  Education & Academic Foundation
+                </h2>
+                <div class="timeline" role="list">
+                  <div class="timeline-item" role="listitem">
+                    <p class="timeline-date">2024 – Present</p>
+                    <h3 class="timeline-role">
+                      Bachelor of Informatics Engineering (S.Kom candidate)
+                    </h3>
+                    <p class="timeline-company">
+                      Universitas Muhammadiyah Prof. Dr. Hamka (UHAMKA)
+                    </p>
+                    <p
+                      style="
+                        font-size: 0.875rem;
+                        color: var(--accent);
+                        font-weight: 600;
+                        margin-bottom: 0.5rem;
+                      "
+                    >
+                      Cumulative GPA: 3.22 / 4.00
+                    </p>
+                    <p
+                      style="
+                        font-size: 0.9rem;
+                        color: var(--text-secondary);
+                        line-height: 1.7;
+                      "
+                    >
+                      Relevant Coursework: Algorithms & Data Structures,
+                      Relational Database Systems (SQL), Object-Oriented
+                      Programming, Web Application Engineering, Artificial
+                      Intelligence Fundamentals, and Software Engineering.
+                    </p>
+                  </div>
+
+                  <div class="timeline-item" role="listitem">
+                    <p class="timeline-date">2020 – 2023</p>
+                    <h3 class="timeline-role">
+                      Natural Sciences (IPA) Diploma
+                    </h3>
+                    <p class="timeline-company">SMA Negeri 61 Jakarta</p>
+                    <p
+                      style="
+                        font-size: 0.875rem;
+                        color: var(--text-muted);
+                        margin-bottom: 0.5rem;
+                      "
+                    >
+                      Average Score: 82.71 / 100
+                    </p>
+                    <p
+                      style="
+                        font-size: 0.9rem;
+                        color: var(--text-secondary);
+                        line-height: 1.7;
+                      "
+                    >
+                      Concentration in mathematics, physics, and analytical
+                      sciences, building a disciplined foundation in
+                      quantitative reasoning.
+                    </p>
+                  </div>
+                </div>
+                <div class="card-glare"></div>
+              </article>
+
+              <!-- Academic Presentation Achievement (FUSION 2024) -->
+              <article class="profile-content-block tilt-card reveal d3">
+                <h2>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="8" r="7"></circle>
+                    <polyline
+                      points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"
+                    ></polyline>
+                  </svg>
+                  Academic Presentation & Public Engagement
+                </h2>
+                <div class="presentation-highlight">
+                  <div class="presentation-photo-container">
+                    <img
+                      src="Fadli Yusra 4.jpeg"
+                      alt="Fadli Yusra presenting at FUSION 2024 academic event"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <span
+                      class="project-badge badge-academic"
+                      style="margin-bottom: 0.5rem"
+                      >Event Speaker / Presenter</span
+                    >
+                    <h3
+                      style="
+                        font-size: 1.15rem;
+                        color: var(--text-primary);
+                        margin-bottom: 0.35rem;
+                      "
+                    >
+                      FUSION Academic Event — Universitas Terbuka
+                    </h3>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        color: var(--text-muted);
+                        margin-bottom: 0.65rem;
+                      "
+                    >
+                      Presenter & Contributor · 2024
+                    </p>
+                    <p
+                      style="
+                        font-size: 0.9rem;
+                        color: var(--text-secondary);
+                        line-height: 1.6;
+                      "
+                    >
+                      Presented academic and technical insights at FUSION, an
+                      educational forum organized by Universitas Terbuka.
+                      Delivered structured concepts before students and faculty,
+                      demonstrating public communication and technical synthesis
+                      skills.
+                    </p>
+                  </div>
+                </div>
+                <div class="card-glare"></div>
+              </article>
+
+              <!-- Career Direction & Technical Interests -->
+              <article class="profile-content-block tilt-card reveal d4">
+                <h2>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                  Technical Interests & Career Direction
+                </h2>
+                <p style="margin-bottom: 1.25rem; line-height: 1.8">
+                  As I progress through my engineering degree, I am actively
+                  directing my professional growth toward four complementary
+                  domains:
+                </p>
+
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                    gap: 1rem;
+                  "
+                >
+                  <div
+                    style="
+                      background: var(--tag-bg);
+                      padding: 1rem;
+                      border-radius: var(--radius-sm);
+                      border: 1px solid var(--border);
+                    "
+                  >
+                    <strong
+                      style="
+                        color: var(--accent);
+                        display: block;
+                        margin-bottom: 0.35rem;
+                      "
+                      >Workflow Automation</strong
+                    >
+                    <span
+                      style="
+                        font-size: 0.85rem;
+                        color: var(--text-secondary);
+                        line-height: 1.5;
+                        display: block;
+                      "
+                    >
+                      Connecting operational platforms, triggering API actions,
+                      and eliminating manual data friction.
+                    </span>
+                  </div>
+
+                  <div
+                    style="
+                      background: var(--tag-bg);
+                      padding: 1rem;
+                      border-radius: var(--radius-sm);
+                      border: 1px solid var(--border);
+                    "
+                  >
+                    <strong
+                      style="
+                        color: var(--accent);
+                        display: block;
+                        margin-bottom: 0.35rem;
+                      "
+                      >Applied AI & ML</strong
+                    >
+                    <span
+                      style="
+                        font-size: 0.85rem;
+                        color: var(--text-secondary);
+                        line-height: 1.5;
+                        display: block;
+                      "
+                    >
+                      Integrating LLMs, prompt engineering, and intelligent
+                      agents into operational workflows.
+                    </span>
+                  </div>
+
+                  <div
+                    style="
+                      background: var(--tag-bg);
+                      padding: 1rem;
+                      border-radius: var(--radius-sm);
+                      border: 1px solid var(--border);
+                    "
+                  >
+                    <strong
+                      style="
+                        color: var(--accent);
+                        display: block;
+                        margin-bottom: 0.35rem;
+                      "
+                      >Data Analytics & SQL</strong
+                    >
+                    <span
+                      style="
+                        font-size: 0.85rem;
+                        color: var(--text-secondary);
+                        line-height: 1.5;
+                        display: block;
+                      "
+                    >
+                      Modeling relational schemas, writing analytical queries,
+                      and building monitoring dashboards.
+                    </span>
+                  </div>
+
+                  <div
+                    style="
+                      background: var(--tag-bg);
+                      padding: 1rem;
+                      border-radius: var(--radius-sm);
+                      border: 1px solid var(--border);
+                    "
+                  >
+                    <strong
+                      style="
+                        color: var(--accent);
+                        display: block;
+                        margin-bottom: 0.35rem;
+                      "
+                      >Software Engineering</strong
+                    >
+                    <span
+                      style="
+                        font-size: 0.85rem;
+                        color: var(--text-secondary);
+                        line-height: 1.5;
+                        display: block;
+                      "
+                    >
+                      Building clean, performant web applications with Laravel,
+                      modern JavaScript, and Python.
+                    </span>
+                  </div>
+                </div>
+                <div class="card-glare"></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>
+          &copy; 2026 Fadli Yusra. Built with high-performance 3D canvas, modern
+          CSS, and vanilla JavaScript.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>
