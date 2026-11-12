@@ -1,12 +1,15 @@
 /**
- * script.js — 3D Interactive Tech Experience
- * - 3D Interactive Perspective Canvas (Interactive Neural Galaxy / Nodes with Mouse Inertia)
- * - 3D Gyroscopic & Mouse Tilt Physics on Cards (Perspective 3D + Glare)
- * - Dynamic Ambient Spotlight tracking cursor
- * - Theme Switcher (Dark by default with high-tech neon accents & Light option)
+ * script.js — 3D Immersive Portfolio Experience (2026)
+ * 
+ * Features:
+ * - Three.js: Floating wireframe geometries + particle galaxy in hero
+ * - GSAP ScrollTrigger: Scroll-driven 3D section animations
+ * - Enhanced 3D tilt cards with holographic glare
+ * - Cursor-following ambient glow
+ * - Theme Switcher (Monochrome Premium dark / light)
  * - Mobile Navigation Drawer
- * - Active Link Scroll Spy
- * - Client-validated Formspree Contact Form
+ * - Active Nav Scroll Spy
+ * - Contact Form with Formspree
  */
 
 (function () {
@@ -19,8 +22,7 @@
   function getPreferredTheme() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === 'dark' || saved === 'light') return saved;
-    // Default to dark for the 3D cybernetic tech aesthetic
-    return 'dark';
+    return 'dark'; // Monochrome Premium dark by default
   }
 
   function applyTheme(theme) {
@@ -39,6 +41,8 @@
         themeToggle.setAttribute('title', 'Switch to light mode');
       }
     }
+    // Update Three.js scene colors if available
+    if (window._updateSceneTheme) window._updateSceneTheme(theme);
   }
 
   applyTheme(getPreferredTheme());
@@ -52,214 +56,295 @@
     });
   }
 
-  // ── 2. 3D INTERACTIVE PARTICLE & NEURAL MESH CANVAS ──
-  const canvas = document.getElementById('heroCanvas');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    let width = 0;
-    let height = 0;
-    let dpr = window.devicePixelRatio || 1;
-    let animationFrameId = null;
-    let isCanvasVisible = true;
+  // ── 2. THREE.JS IMMERSIVE 3D SCENE ──
+  const threeBg = document.getElementById('three-bg');
+  const prefersReducedMotionInit =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // 3D Particles
-    const PARTICLE_COUNT = window.innerWidth < 768 ? 45 : 85;
-    const particles = [];
-    const FOV = 400; // Field of view distance
+  if (threeBg && window.THREE && !prefersReducedMotionInit) {
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x050505, 0.018);
 
-    // Rotation state & mouse inertia
-    let rotX = 0;
-    let rotY = 0;
-    let targetRotX = 0;
-    let targetRotY = 0;
+    const camera = new THREE.PerspectiveCamera(
+      60,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      200
+    );
+    camera.position.set(0, 0, 28);
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: threeBg,
+      antialias: true,
+      alpha: true,
+      powerPreference: 'high-performance',
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
+
     let mouseX = 0;
     let mouseY = 0;
+    let targetMouseX = 0;
+    let targetMouseY = 0;
+    const isMobile = window.innerWidth < 768;
+    const isDark = document.body.classList.contains('dark-mode');
 
-    function resizeCanvas() {
-      const parent = canvas.parentElement;
-      width = parent ? parent.offsetWidth : window.innerWidth;
-      height = parent ? parent.offsetHeight : window.innerHeight;
+    scene.add(new THREE.AmbientLight(0x102030, 0.55));
+    const lightCyan = new THREE.PointLight(0x00d4ff, 2.4, 90);
+    lightCyan.position.set(12, 10, 18);
+    scene.add(lightCyan);
+    const lightViolet = new THREE.PointLight(0x7c3aed, 1.8, 90);
+    lightViolet.position.set(-16, -8, 12);
+    scene.add(lightViolet);
 
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
-      ctx.scale(dpr, dpr);
+    const crystal = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(4.2, 1),
+      new THREE.MeshStandardMaterial({
+        color: 0x061018,
+        emissive: 0x00d4ff,
+        emissiveIntensity: 0.35,
+        metalness: 0.85,
+        roughness: 0.18,
+        wireframe: false,
+      })
+    );
+    crystal.position.set(8.5, 1.2, -6);
+    scene.add(crystal);
+
+    const crystalWire = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(4.35, 1),
+      new THREE.MeshBasicMaterial({
+        color: 0x00d4ff,
+        wireframe: true,
+        transparent: true,
+        opacity: isDark ? 0.28 : 0.12,
+      })
+    );
+    crystal.add(crystalWire);
+
+    const knot = new THREE.Mesh(
+      new THREE.TorusKnotGeometry(2.2, 0.42, 128, 16),
+      new THREE.MeshStandardMaterial({
+        color: 0x14081f,
+        emissive: 0x7c3aed,
+        emissiveIntensity: 0.45,
+        metalness: 0.7,
+        roughness: 0.25,
+      })
+    );
+    knot.position.set(-11, -3.5, -8);
+    scene.add(knot);
+
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(6.4, 0.035, 16, 96),
+      new THREE.MeshBasicMaterial({
+        color: 0x00d4ff,
+        transparent: true,
+        opacity: 0.35,
+      })
+    );
+    ring.rotation.x = Math.PI / 2.4;
+    ring.position.copy(crystal.position);
+    scene.add(ring);
+
+    const ring2 = ring.clone();
+    ring2.rotation.z = Math.PI / 3;
+    ring2.scale.set(0.78, 0.78, 0.78);
+    ring2.material = ring.material.clone();
+    ring2.material.color.setHex(0x7c3aed);
+    scene.add(ring2);
+
+    const geometries = [];
+    const geoConfigs = [
+      { geo: new THREE.OctahedronGeometry(1.6, 0), pos: [-16, 8, -14], speed: 0.004 },
+      { geo: new THREE.TetrahedronGeometry(1.4, 0), pos: [16, -9, -12], speed: 0.005 },
+      { geo: new THREE.DodecahedronGeometry(1.3, 0), pos: [4, 10, -18], speed: 0.003 },
+      { geo: new THREE.IcosahedronGeometry(1.1, 0), pos: [-6, -11, -16], speed: 0.004 },
+    ];
+
+    geoConfigs.forEach(function (cfg, i) {
+      const mesh = new THREE.Mesh(
+        cfg.geo,
+        new THREE.MeshBasicMaterial({
+          color: i % 2 === 0 ? 0x00d4ff : 0x7c3aed,
+          wireframe: true,
+          transparent: true,
+          opacity: isDark ? 0.22 : 0.1,
+        })
+      );
+      mesh.position.set(cfg.pos[0], cfg.pos[1], cfg.pos[2]);
+      mesh.userData = {
+        speed: cfg.speed,
+        baseY: cfg.pos[1],
+        phase: Math.random() * Math.PI * 2,
+      };
+      scene.add(mesh);
+      geometries.push(mesh);
+    });
+
+    const nodeCount = isMobile ? 48 : 90;
+    const nodePositions = [];
+    const nodes = new THREE.Group();
+    for (let i = 0; i < nodeCount; i++) {
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(Math.random() * 2 - 1);
+      const r = 10 + Math.random() * 18;
+      const x = r * Math.sin(phi) * Math.cos(theta);
+      const y = r * Math.sin(phi) * Math.sin(theta);
+      const z = r * Math.cos(phi) - 6;
+      nodePositions.push(new THREE.Vector3(x, y, z));
     }
 
-    // Initialize 3D point cloud in a spherical/ellipsoid volume
-    function initParticles() {
-      particles.length = 0;
-      const radius = Math.min(width, height) * 0.45;
+    const nodeGeo = new THREE.BufferGeometry().setFromPoints(nodePositions);
+    const nodePoints = new THREE.Points(
+      nodeGeo,
+      new THREE.PointsMaterial({
+        color: 0x00d4ff,
+        size: 0.12,
+        transparent: true,
+        opacity: 0.85,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+      })
+    );
+    nodes.add(nodePoints);
 
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        // Spherical distribution
-        const theta = Math.random() * 2 * Math.PI;
-        const phi = Math.acos(Math.random() * 2 - 1);
-        const r = radius * Math.cbrt(Math.random()); // Even volume distribution
-
-        particles.push({
-          x: r * Math.sin(phi) * Math.cos(theta),
-          y: r * Math.sin(phi) * Math.sin(theta),
-          z: r * Math.cos(phi),
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          vz: (Math.random() - 0.5) * 0.4,
-          baseRadius: Math.random() * 2 + 1.2,
-          pulse: Math.random() * Math.PI * 2,
-        });
-      }
-    }
-
-    resizeCanvas();
-    initParticles();
-    window.addEventListener('resize', function () {
-      resizeCanvas();
-      initParticles();
-    }, { passive: true });
-
-    // Track mouse over window with smooth easing
-    window.addEventListener('mousemove', function (e) {
-      const rect = canvas.getBoundingClientRect();
-      mouseX = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
-      mouseY = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-
-      targetRotY = mouseX * 0.55;
-      targetRotX = -mouseY * 0.55;
-    }, { passive: true });
-
-    // Render loop
-    function render3D() {
-      if (!isCanvasVisible) {
-        animationFrameId = requestAnimationFrame(render3D);
-        return;
-      }
-
-      ctx.clearRect(0, 0, width, height);
-
-      // Smooth inertia rotation
-      rotX += (targetRotX - rotX) * 0.05 + 0.001; // Continuous subtle spin
-      rotY += (targetRotY - rotY) * 0.05 + 0.002;
-
-      const cosX = Math.cos(rotX);
-      const sinX = Math.sin(rotX);
-      const cosY = Math.cos(rotY);
-      const sinY = Math.sin(rotY);
-
-      const cx = width / 2;
-      const cy = height / 2;
-
-      const isDarkMode = document.body.classList.contains('dark-mode');
-      const pointColor = isDarkMode ? '59, 130, 246' : '37, 99, 235';
-      const accentColor = isDarkMode ? '168, 85, 247' : '124, 58, 237';
-
-      // Transform, project and sort particles by depth (Z-buffer)
-      const projected = [];
-
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-
-        // Animate particles subtly
-        p.x += p.vx;
-        p.y += p.vy;
-        p.z += p.vz;
-        p.pulse += 0.03;
-
-        // Bounce within sphere boundary
-        const dist = Math.hypot(p.x, p.y, p.z);
-        const maxR = Math.min(width, height) * 0.5;
-        if (dist > maxR) {
-          p.x = (p.x / dist) * maxR * 0.98;
-          p.y = (p.y / dist) * maxR * 0.98;
-          p.z = (p.z / dist) * maxR * 0.98;
-          p.vx *= -1;
-          p.vy *= -1;
-          p.vz *= -1;
-        }
-
-        // 3D Matrix Rotation (Y then X)
-        const x1 = p.x * cosY + p.z * sinY;
-        const z1 = -p.x * sinY + p.z * cosY;
-
-        const y2 = p.y * cosX - z1 * sinX;
-        const z2 = p.y * sinX + z1 * cosX;
-
-        // Perspective Projection
-        const distance = FOV + z2;
-        if (distance <= 0) continue;
-
-        const scale = FOV / distance;
-        const screenX = cx + x1 * scale;
-        const screenY = cy + y2 * scale;
-        const alpha = Math.min(Math.max((z2 + 300) / 600, 0.15), 0.95);
-
-        projected.push({
-          x: screenX,
-          y: screenY,
-          z: z2,
-          scale: scale,
-          alpha: alpha,
-          size: p.baseRadius * scale * (1 + 0.2 * Math.sin(p.pulse)),
-          isAccent: i % 4 === 0,
-        });
-      }
-
-      // Draw connecting lines in 3D
-      const maxConnectDist = window.innerWidth < 768 ? 95 : 120;
-      for (let i = 0; i < projected.length; i++) {
-        for (let j = i + 1; j < projected.length; j++) {
-          const p1 = projected[i];
-          const p2 = projected[j];
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const dist2D = Math.hypot(dx, dy);
-
-          if (dist2D < maxConnectDist) {
-            const lineAlpha = (1 - dist2D / maxConnectDist) * Math.min(p1.alpha, p2.alpha) * 0.4;
-            ctx.strokeStyle = `rgba(${p1.isAccent ? accentColor : pointColor}, ${lineAlpha})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.stroke();
-          }
+    const linePositions = [];
+    const maxDist = 7.2;
+    for (let i = 0; i < nodeCount; i++) {
+      for (let j = i + 1; j < nodeCount; j++) {
+        if (nodePositions[i].distanceTo(nodePositions[j]) < maxDist) {
+          linePositions.push(nodePositions[i], nodePositions[j]);
         }
       }
+    }
+    const lineGeo = new THREE.BufferGeometry().setFromPoints(linePositions);
+    const networkLines = new THREE.LineSegments(
+      lineGeo,
+      new THREE.LineBasicMaterial({
+        color: 0x00d4ff,
+        transparent: true,
+        opacity: isDark ? 0.12 : 0.06,
+      })
+    );
+    nodes.add(networkLines);
+    scene.add(nodes);
 
-      // Draw 3D nodes with glow
-      for (let i = 0; i < projected.length; i++) {
-        const p = projected[i];
-        const color = p.isAccent ? accentColor : pointColor;
+    const particleCount = isMobile ? 600 : 1600;
+    const particlePositions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      const theta = Math.random() * 2 * Math.PI;
+      const phi = Math.acos(Math.random() * 2 - 1);
+      const r = 18 + Math.random() * 42;
+      particlePositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      particlePositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      particlePositions[i * 3 + 2] = r * Math.cos(phi);
+    }
+    const particleGeometry = new THREE.BufferGeometry();
+    particleGeometry.setAttribute(
+      'position',
+      new THREE.BufferAttribute(particlePositions, 3)
+    );
+    const particleMaterial = new THREE.PointsMaterial({
+      color: isDark ? 0x7ecbff : 0x4aa8c9,
+      size: 0.055,
+      transparent: true,
+      opacity: isDark ? 0.55 : 0.28,
+      sizeAttenuation: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+    const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+    scene.add(particleSystem);
 
-        // Soft outer glow
-        ctx.fillStyle = `rgba(${color}, ${p.alpha * 0.3})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 2.5, 0, Math.PI * 2);
-        ctx.fill();
+    window._updateSceneTheme = function (theme) {
+      const dark = theme === 'dark';
+      scene.fog = new THREE.FogExp2(dark ? 0x050505 : 0xf4f7fb, dark ? 0.018 : 0.012);
+      crystalWire.material.opacity = dark ? 0.28 : 0.12;
+      networkLines.material.opacity = dark ? 0.12 : 0.06;
+      particleMaterial.color.setHex(dark ? 0x7ecbff : 0x4aa8c9);
+      particleMaterial.opacity = dark ? 0.55 : 0.28;
+      geometries.forEach(function (mesh, i) {
+        mesh.material.opacity = dark ? 0.22 : 0.1;
+        mesh.material.color.setHex(i % 2 === 0 ? 0x00d4ff : 0x7c3aed);
+      });
+    };
 
-        // Core dot
-        ctx.fillStyle = `rgba(${color}, ${p.alpha})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
+    document.addEventListener(
+      'mousemove',
+      function (e) {
+        targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        targetMouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+      },
+      { passive: true }
+    );
 
-      animationFrameId = requestAnimationFrame(render3D);
+    window.addEventListener(
+      'resize',
+      function () {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      },
+      { passive: true }
+    );
+
+    let time = 0;
+    let isSceneVisible = document.visibilityState === 'visible';
+    document.addEventListener('visibilitychange', function () {
+      isSceneVisible = document.visibilityState === 'visible';
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      if (!isSceneVisible) return;
+
+      time += 0.008;
+      mouseX += (targetMouseX - mouseX) * 0.035;
+      mouseY += (targetMouseY - mouseY) * 0.035;
+
+      camera.position.x = mouseX * 4.5;
+      camera.position.y = mouseY * 2.4;
+      camera.lookAt(0, 0, 0);
+
+      crystal.rotation.x += 0.0025;
+      crystal.rotation.y += 0.004;
+      knot.rotation.x += 0.006;
+      knot.rotation.y += 0.008;
+      ring.rotation.z += 0.004;
+      ring2.rotation.y += 0.005;
+      nodes.rotation.y = time * 0.12;
+      particleSystem.rotation.y = time * 0.04;
+      particleSystem.rotation.x = time * 0.015;
+      lightCyan.position.x = 12 + Math.sin(time) * 4;
+      lightViolet.position.y = -8 + Math.cos(time * 0.8) * 3;
+
+      geometries.forEach(function (mesh) {
+        mesh.rotation.x += mesh.userData.speed;
+        mesh.rotation.y += mesh.userData.speed * 0.7;
+        mesh.position.y =
+          mesh.userData.baseY + Math.sin(time * 2 + mesh.userData.phase) * 1.4;
+      });
+
+      renderer.render(scene, camera);
     }
 
-    // Pause rendering when hero is off-screen to save CPU & battery
-    const heroSection = document.getElementById('hero');
-    if ('IntersectionObserver' in window && heroSection) {
-      const heroObserver = new IntersectionObserver(function (entries) {
-        isCanvasVisible = entries[0].isIntersecting;
-      }, { threshold: 0.05 });
-      heroObserver.observe(heroSection);
-    }
-
-    animationFrameId = requestAnimationFrame(render3D);
+    animate();
   }
 
-  // ── 3. 3D TILT EFFECT ON CARDS WITH DYNAMIC PERSPECTIVE & GLARE ──
+  // ── 3. CURSOR GLOW FOLLOW ──
+  const cursorGlow = document.querySelector('.cursor-glow');
+  if (cursorGlow && window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mousemove', function (e) {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+    }, { passive: true });
+  }
+
+  // ── 4. ENHANCED 3D TILT EFFECT ON CARDS ──
   const tiltCards = document.querySelectorAll('.tilt-card');
   const prefersReducedMotion = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -274,13 +359,13 @@
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        const rotateX = ((y - centerY) / centerY) * -7; // Max tilt 7deg
-        const rotateY = ((x - centerX) / centerX) * 7;
+        const rotateX = ((y - centerY) / centerY) * -8;
+        const rotateY = ((x - centerX) / centerX) * 8;
 
-        // Dynamic 3D perspective tilt
-        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+        card.style.transform = 
+          `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px) scale(1.01)`;
 
-        // Set CSS variables for holographic glare highlight
+        // Holographic glare
         const glareX = (x / rect.width) * 100;
         const glareY = (y / rect.height) * 100;
         card.style.setProperty('--glare-x', `${glareX}%`);
@@ -288,12 +373,115 @@
       });
 
       card.addEventListener('mouseleave', function () {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
       });
     });
   }
 
-  // ── 4. MOBILE NAVIGATION DRAWER ──
+  // ── 5. GSAP SCROLL ANIMATIONS ──
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate sections on scroll with 3D transforms
+    const sections = document.querySelectorAll('section');
+    
+    sections.forEach(function (section) {
+      gsap.fromTo(section.querySelectorAll('.reveal'), 
+        {
+          opacity: 0,
+          y: 50,
+          rotateX: -5,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 85%',
+            end: 'top 35%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    });
+
+    // Hero entrance animation
+    const heroElements = document.querySelectorAll('.hero .hero-text > *');
+    gsap.fromTo(heroElements,
+      { opacity: 0, y: 40, filter: 'blur(8px)' },
+      { 
+        opacity: 1, 
+        y: 0, 
+        filter: 'blur(0px)',
+        duration: 1,
+        stagger: 0.12,
+        ease: 'power4.out',
+        delay: 0.3,
+      }
+    );
+
+    // Hero image 3D float in
+    const heroImg = document.querySelector('.hero-img-container');
+    if (heroImg) {
+      gsap.fromTo(heroImg,
+        { opacity: 0, scale: 0.8, rotateY: -15 },
+        { 
+          opacity: 1, 
+          scale: 1, 
+          rotateY: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+          delay: 0.5,
+        }
+      );
+    }
+
+    // Parallax effect on hero image while scrolling
+    if (heroImg) {
+      gsap.to(heroImg, {
+        y: 80,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+    }
+
+  } else {
+    // Fallback: IntersectionObserver for reveal animations
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      revealElements.forEach(function (el) {
+        el.classList.add('visible');
+      });
+    } else {
+      const revealObserver = new IntersectionObserver(
+        function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: '0px 0px -60px 0px', threshold: 0.1 }
+      );
+
+      revealElements.forEach(function (el) {
+        revealObserver.observe(el);
+      });
+    }
+  }
+
+  // ── 6. MOBILE NAVIGATION DRAWER ──
   const hamburger = document.getElementById('hamburger');
   const navOverlay = document.getElementById('navOverlay');
   const navOverlayBg = document.getElementById('navOverlayBg');
@@ -347,7 +535,7 @@
     }
   });
 
-  // ── 5. HEADER SCROLL ELEVATION ──
+  // ── 7. HEADER SCROLL ELEVATION ──
   const header = document.getElementById('header');
   function handleHeaderScroll() {
     if (!header) return;
@@ -360,11 +548,11 @@
   window.addEventListener('scroll', handleHeaderScroll, { passive: true });
   handleHeaderScroll();
 
-  // ── 6. ACTIVE NAV SCROLL SPY & PAGE HIGHLIGHT ──
+  // ── 8. ACTIVE NAV SCROLL SPY ──
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const isSubpage = currentPath === 'profil.html' || currentPath === 'kontak.html';
 
-  const sections = document.querySelectorAll('section[id], main[id]');
+  const pageSections = document.querySelectorAll('section[id], main[id]');
   const desktopNavLinks = document.querySelectorAll('.nav-links a');
   const drawerNavLinks = document.querySelectorAll('.nav-drawer-links a');
 
@@ -385,11 +573,10 @@
       return;
     }
 
-    // Single-page scroll spy for index.html
     const scrollPosition = window.pageYOffset + 120;
     let currentId = '';
 
-    sections.forEach(function (section) {
+    pageSections.forEach(function (section) {
       const top = section.offsetTop;
       const height = section.offsetHeight;
       const id = section.getAttribute('id');
@@ -398,8 +585,8 @@
       }
     });
 
-    if (!currentId && sections.length > 0) {
-      currentId = sections[0].getAttribute('id');
+    if (!currentId && pageSections.length > 0) {
+      currentId = pageSections[0].getAttribute('id');
     }
 
     function syncLinks(linkList) {
@@ -420,35 +607,7 @@
   window.addEventListener('scroll', updateActiveNav, { passive: true });
   updateActiveNav();
 
-  // ── 7. SCROLL REVEAL (WITH REDUCED MOTION RESPECT) ──
-  const revealElements = document.querySelectorAll('.reveal');
-
-  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-    revealElements.forEach(function (el) {
-      el.classList.add('visible');
-    });
-  } else {
-    const revealObserver = new IntersectionObserver(
-      function (entries, observer) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        rootMargin: '0px 0px -50px 0px',
-        threshold: 0.1,
-      }
-    );
-
-    revealElements.forEach(function (el) {
-      revealObserver.observe(el);
-    });
-  }
-
-  // ── 8. CONTACT FORM VALIDATION & SUBMISSION ──
+  // ── 9. CONTACT FORM VALIDATION & SUBMISSION ──
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     const nameInput = document.getElementById('name');
@@ -471,9 +630,7 @@
         input.classList.remove('input-error');
         input.removeAttribute('aria-invalid');
       }
-      if (errorEl) {
-        errorEl.classList.remove('show');
-      }
+      if (errorEl) errorEl.classList.remove('show');
     }
 
     function showError(input, errorEl) {
@@ -481,9 +638,7 @@
         input.classList.add('input-error');
         input.setAttribute('aria-invalid', 'true');
       }
-      if (errorEl) {
-        errorEl.classList.add('show');
-      }
+      if (errorEl) errorEl.classList.add('show');
     }
 
     if (nameInput) nameInput.addEventListener('input', () => clearError(nameInput, errName));
@@ -547,7 +702,7 @@
       const originalBtnText = submitBtn ? submitBtn.textContent : 'Send Message';
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Transmitting...';
+        submitBtn.textContent = 'Sending...';
       }
 
       const formData = new FormData(contactForm);
@@ -555,28 +710,26 @@
       fetch('https://formspree.io/f/xgoprkvr', {
         method: 'POST',
         body: formData,
-        headers: {
-          Accept: 'application/json',
-        },
+        headers: { Accept: 'application/json' },
       })
         .then(function (res) {
           if (res.ok) {
             contactForm.reset();
             if (formFeedback) {
               formFeedback.className = 'form-feedback success';
-              formFeedback.textContent = 'Message transmitted successfully! I will respond to your inquiry shortly.';
+              formFeedback.textContent = 'Message sent successfully! I\'ll respond shortly.';
               formFeedback.style.display = 'block';
             }
           } else {
             return res.json().then(function (data) {
-              throw new Error(data && data.error ? data.error : 'Transmission failed');
+              throw new Error(data && data.error ? data.error : 'Send failed');
             });
           }
         })
         .catch(function () {
           if (formFeedback) {
             formFeedback.className = 'form-feedback error';
-            formFeedback.innerHTML = 'Automated transmission failed. Please reach out directly to <a href="mailto:fadliyusra84@gmail.com" style="text-decoration: underline; color: inherit; font-weight: 700;">fadliyusra84@gmail.com</a>.';
+            formFeedback.innerHTML = 'Failed to send. Please email me directly at <a href="mailto:fadliyusra84@gmail.com" style="text-decoration: underline; color: inherit; font-weight: 700;">fadliyusra84@gmail.com</a>.';
             formFeedback.style.display = 'block';
           }
         })
